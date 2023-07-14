@@ -26,5 +26,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>приложуля хочет локацию</string>
 </dict>
 </plist>
