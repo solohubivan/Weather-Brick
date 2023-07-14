@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22D2D9F82A6177CD009BF5C3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2D9F72A6177CD009BF5C3 /* R.generated.swift */; };
+		22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACB2A6163F100A91420 /* AppDelegate.swift */; };
+		22DC5ACE2A6163F100A91420 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */; };
+		22DC5AD02A6163F100A91420 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACF2A6163F100A91420 /* MainViewController.swift */; };
+		22DC5AD52A6163F100A91420 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AD42A6163F100A91420 /* Assets.xcassets */; };
+		22DC5AD82A6163F100A91420 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AD62A6163F100A91420 /* LaunchScreen.storyboard */; };
+		22DC5AE22A61688600A91420 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AE12A61688600A91420 /* MainViewController.xib */; };
+		22DC5AE82A61708C00A91420 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5AE72A61708C00A91420 /* UIViewExtension.swift */; };
+		22DC5AEA2A6170ED00A91420 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5AE92A6170ED00A91420 /* UIColorExtension.swift */; };
+		22DC5AEC2A6171A600A91420 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AEB2A6171A600A91420 /* Ubuntu-Bold.ttf */; };
+		22DC5AEE2A6171B400A91420 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AED2A6171B400A91420 /* Ubuntu-Light.ttf */; };
+		22DC5AF02A6171CA00A91420 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AEF2A6171CA00A91420 /* Ubuntu-Medium.ttf */; };
+		22DC5AF22A6171D400A91420 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AF12A6171D400A91420 /* Ubuntu-Regular.ttf */; };
+		22DC5AF42A61733E00A91420 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5AF32A61733E00A91420 /* DataModels.swift */; };
+		22DC5AF62A61736E00A91420 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AF52A61736E00A91420 /* Localizable.strings */; };
+		E26DE0B43571BAB8446FEADB /* Pods_Weather_Brick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6E4C8A0DA148F2E5A01A52 /* Pods_Weather_Brick.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D6E4C8A0DA148F2E5A01A52 /* Pods_Weather_Brick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_Brick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17A9504129BEE869DC976C7B /* Pods-Weather Brick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather Brick.release.xcconfig"; path = "Target Support Files/Pods-Weather Brick/Pods-Weather Brick.release.xcconfig"; sourceTree = "<group>"; };
+		22D2D9F72A6177CD009BF5C3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		22DC5AC82A6163F100A91420 /* Weather Brick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Brick.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22DC5ACB2A6163F100A91420 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		22DC5ACF2A6163F100A91420 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		22DC5AD42A6163F100A91420 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22DC5AD72A6163F100A91420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22DC5AD92A6163F100A91420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22DC5AE12A61688600A91420 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		22DC5AE72A61708C00A91420 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		22DC5AE92A6170ED00A91420 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		22DC5AEB2A6171A600A91420 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		22DC5AED2A6171B400A91420 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		22DC5AEF2A6171CA00A91420 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		22DC5AF12A6171D400A91420 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		22DC5AF32A61733E00A91420 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		22DC5AF52A61736E00A91420 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C9BD6A5DCDFC1AEEA8354544 /* Pods-Weather Brick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather Brick.debug.xcconfig"; path = "Target Support Files/Pods-Weather Brick/Pods-Weather Brick.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22DC5AC52A6163F100A91420 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E26DE0B43571BAB8446FEADB /* Pods_Weather_Brick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0EF268B84EDC447AE6DDC1E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D6E4C8A0DA148F2E5A01A52 /* Pods_Weather_Brick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22DC5ABF2A6163F100A91420 = {
+			isa = PBXGroup;
+			children = (
+				22DC5ACA2A6163F100A91420 /* Weather Brick */,
+				22DC5AC92A6163F100A91420 /* Products */,
+				945DE5545F368CEC347F6F8D /* Pods */,
+				0EF268B84EDC447AE6DDC1E7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		22DC5AC92A6163F100A91420 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22DC5AC82A6163F100A91420 /* Weather Brick.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22DC5ACA2A6163F100A91420 /* Weather Brick */ = {
+			isa = PBXGroup;
+			children = (
+				22D2D9F72A6177CD009BF5C3 /* R.generated.swift */,
+				22DC5AD92A6163F100A91420 /* Info.plist */,
+				22DC5AE62A616FFF00A91420 /* Supporting Files */,
+				22DC5AE42A616DEA00A91420 /* Extensions */,
+				22DC5AE32A616DA100A91420 /* Resources */,
+				22DC5ADF2A61677B00A91420 /* Modules */,
+			);
+			path = "Weather Brick";
+			sourceTree = "<group>";
+		};
+		22DC5ADF2A61677B00A91420 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				22DC5AE02A61679C00A91420 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		22DC5AE02A61679C00A91420 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				22DC5ACF2A6163F100A91420 /* MainViewController.swift */,
+				22DC5AE12A61688600A91420 /* MainViewController.xib */,
+				22DC5AF32A61733E00A91420 /* DataModels.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		22DC5AE32A616DA100A91420 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				22DC5AE52A616FC700A91420 /* Fonts */,
+				22DC5AD42A6163F100A91420 /* Assets.xcassets */,
+				22DC5AF52A61736E00A91420 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		22DC5AE42A616DEA00A91420 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				22DC5AE72A61708C00A91420 /* UIViewExtension.swift */,
+				22DC5AE92A6170ED00A91420 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		22DC5AE52A616FC700A91420 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				22DC5AEB2A6171A600A91420 /* Ubuntu-Bold.ttf */,
+				22DC5AEF2A6171CA00A91420 /* Ubuntu-Medium.ttf */,
+				22DC5AF12A6171D400A91420 /* Ubuntu-Regular.ttf */,
+				22DC5AED2A6171B400A91420 /* Ubuntu-Light.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		22DC5AE62A616FFF00A91420 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22DC5AD62A6163F100A91420 /* LaunchScreen.storyboard */,
+				22DC5ACB2A6163F100A91420 /* AppDelegate.swift */,
+				22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		945DE5545F368CEC347F6F8D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9BD6A5DCDFC1AEEA8354544 /* Pods-Weather Brick.debug.xcconfig */,
+				17A9504129BEE869DC976C7B /* Pods-Weather Brick.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22DC5AC72A6163F100A91420 /* Weather Brick */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22DC5ADC2A6163F100A91420 /* Build configuration list for PBXNativeTarget "Weather Brick" */;
+			buildPhases = (
+				83194CBB24B5A4CDFDB4C2C5 /* [CP] Check Pods Manifest.lock */,
+				22DC5AF72A61763C00A91420 /* ShellScript */,
+				22DC5AC42A6163F100A91420 /* Sources */,
+				22DC5AC52A6163F100A91420 /* Frameworks */,
+				22DC5AC62A6163F100A91420 /* Resources */,
+				343B808DB7219E239458FF53 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Weather Brick";
+			productName = "Weather Brick";
+			productReference = 22DC5AC82A6163F100A91420 /* Weather Brick.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22DC5AC02A6163F100A91420 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					22DC5AC72A6163F100A91420 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 22DC5AC32A6163F100A91420 /* Build configuration list for PBXProject "Weather Brick" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22DC5ABF2A6163F100A91420;
+			productRefGroup = 22DC5AC92A6163F100A91420 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22DC5AC72A6163F100A91420 /* Weather Brick */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22DC5AC62A6163F100A91420 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22DC5AEC2A6171A600A91420 /* Ubuntu-Bold.ttf in Resources */,
+				22DC5AD82A6163F100A91420 /* LaunchScreen.storyboard in Resources */,
+				22DC5AF02A6171CA00A91420 /* Ubuntu-Medium.ttf in Resources */,
+				22DC5AEE2A6171B400A91420 /* Ubuntu-Light.ttf in Resources */,
+				22DC5AE22A61688600A91420 /* MainViewController.xib in Resources */,
+				22DC5AF62A61736E00A91420 /* Localizable.strings in Resources */,
+				22DC5AF22A6171D400A91420 /* Ubuntu-Regular.ttf in Resources */,
+				22DC5AD52A6163F100A91420 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22DC5AF72A61763C00A91420 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		343B808DB7219E239458FF53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Weather Brick/Pods-Weather Brick-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Weather Brick/Pods-Weather Brick-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Weather Brick/Pods-Weather Brick-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83194CBB24B5A4CDFDB4C2C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weather Brick-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22DC5AC42A6163F100A91420 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22DC5AD02A6163F100A91420 /* MainViewController.swift in Sources */,
+				22D2D9F82A6177CD009BF5C3 /* R.generated.swift in Sources */,
+				22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */,
+				22DC5AEA2A6170ED00A91420 /* UIColorExtension.swift in Sources */,
+				22DC5AF42A61733E00A91420 /* DataModels.swift in Sources */,
+				22DC5AE82A61708C00A91420 /* UIViewExtension.swift in Sources */,
+				22DC5ACE2A6163F100A91420 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		22DC5AD62A6163F100A91420 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22DC5AD72A6163F100A91420 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22DC5ADA2A6163F100A91420 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22DC5ADB2A6163F100A91420 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22DC5ADD2A6163F100A91420 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9BD6A5DCDFC1AEEA8354544 /* Pods-Weather Brick.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Weather Brick/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Solohub.Weather-Brick";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22DC5ADE2A6163F100A91420 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17A9504129BEE869DC976C7B /* Pods-Weather Brick.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Weather Brick/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Solohub.Weather-Brick";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22DC5AC32A6163F100A91420 /* Build configuration list for PBXProject "Weather Brick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22DC5ADA2A6163F100A91420 /* Debug */,
+				22DC5ADB2A6163F100A91420 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22DC5ADC2A6163F100A91420 /* Build configuration list for PBXNativeTarget "Weather Brick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22DC5ADD2A6163F100A91420 /* Debug */,
+				22DC5ADE2A6163F100A91420 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22DC5AC02A6163F100A91420 /* Project object */;
+}
