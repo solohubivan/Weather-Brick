@@ -11,13 +11,14 @@ import CoreLocation
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var weatherDescribLabel: UILabel!
-    @IBOutlet weak var locationPositionLabel: UILabel!
-    @IBOutlet weak var visualWeatherDisplayBrickView: UIView!
+    @IBOutlet weak private var temperatureLabel: UILabel!
+    @IBOutlet weak private var weatherDescribLabel: UILabel!
+    @IBOutlet weak private var locationPositionLabel: UILabel!
+    @IBOutlet weak private var visualWeatherDisplayBrickView: UIView!
+    @IBOutlet weak private var infoView: UIView!
     
-    var weatherData = WeatherData()
-    var locationManager = CLLocationManager()
+    private var weatherData = WeatherData()
+    private var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +31,63 @@ class MainViewController: UIViewController {
     
     private func setupUI() {
         setupBackgroundColor()
+        setupInfoView()
         setupTemperatureLabel()
         setupWeatherConditionLabel()
         setupLocationPositionLabel()
         setupVisualWeatherDisplayBrick()
+        setupTapGestureRecognizer()
+    }
+    
+    private func setupInfoView() {
+
+        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: 175, height: 85))
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = contentView.bounds
+        gradientLayer.colors = [
+            UIColor(red: 1, green: 0.6, blue: 0.375, alpha: 1).cgColor,
+            UIColor(red: 0.977, green: 0.315, blue: 0.106, alpha: 1).cgColor
+           ]
+        gradientLayer.locations = [0, 1]
+        gradientLayer.startPoint = CGPoint(x: 0.3, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.3, y: 0.8)
+        
+        contentView.layer.insertSublayer(gradientLayer, at: 0)
+        contentView.layer.cornerRadius = 15
+        contentView.layer.masksToBounds = true
+        
+        let label = UILabel()
+        label.text = "INFO"
+        label.textColor = UIColor.standartTextColor
+        label.textAlignment = .center
+        label.font = R.font.ubuntuBold(size: 18)
+        
+        contentView.addSubview(label)
+        label.addConstraints(to_view: contentView, [
+            .top(anchor: contentView.topAnchor, constant: 16),
+            .bottom(anchor: contentView.bottomAnchor, constant: 47),
+            .centerX(anchor: contentView.centerXAnchor)])
+        
+        view.addSubview(infoView)
+        infoView.addConstraints(to_view: view, [
+            .centerX(anchor: view.centerXAnchor),
+            .bottom(anchor: view.bottomAnchor, constant: -22),
+            .height(constant: 85),
+            .width(constant: 175)])
+        infoView.addSubview(contentView)
+        
+        infoView.layer.shadowColor = UIColor.black.cgColor
+        infoView.layer.shadowOpacity = 0.5
+        infoView.layer.shadowOffset = CGSize(width: 2, height: 4)
+        infoView.layer.shadowRadius = 4
+        infoView.layer.cornerRadius = 15
     }
     
     private func setupBackgroundColor() {
-        let imageView = UIImageView(image: R.image.image_background())
-        imageView.frame = view.bounds
-        imageView.contentMode = .scaleToFill
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(imageView)
+        let backgroundImageView = UIImageView(frame: view.bounds)
+        backgroundImageView.image = R.image.image_background()
+        view.addSubview(backgroundImageView)
     }
     
     private func setupTemperatureLabel() {
@@ -99,6 +145,20 @@ class MainViewController: UIViewController {
         view.addSubview(visualWeatherDisplayBrickView)
     }
     
+    private func setupTapGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userTapped))
+        infoView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func userTapped(_ gesture: UITapGestureRecognizer) {
+        if gesture.state == .ended {
+            
+            let infoPageVC = InfoPageView()
+            infoPageVC.modalPresentationStyle = .fullScreen
+            present(infoPageVC, animated: false)
+        }
+    }
+    
     //MARK: - Private methods
     
     private func startLocationManager() {
@@ -147,15 +207,14 @@ class MainViewController: UIViewController {
         }
         
         //updating locationPositionLabel value
-        let locationPositionCity = weatherData.name
-        let text = "\(locationPositionCity)"
-        
+        let text = " \(weatherData.name), \(weatherData.sys.country) "
+
         let leftIconAttachment = NSTextAttachment()
         leftIconAttachment.image = R.image.icon_location()
         let rightIconAttachment = NSTextAttachment()
         rightIconAttachment.image = R.image.icon_search()
         
-        let iconSize = CGSize(width: 16, height: 16)
+        let iconSize = CGSize(width: Constants.iconSize, height: Constants.iconSize)
         leftIconAttachment.bounds = CGRect(origin: .zero, size: iconSize)
         rightIconAttachment.bounds = CGRect(origin: .zero, size: iconSize)
         
@@ -175,5 +234,12 @@ extension MainViewController: CLLocationManagerDelegate {
         if let lastLocation = locations.last {
             updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
         }
+    }
+}
+
+//MARK: - Constants
+extension MainViewController {
+    private enum Constants {
+        static let iconSize: CGFloat = 16
     }
 }

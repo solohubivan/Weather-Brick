@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22D2D9F82A6177CD009BF5C3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2D9F72A6177CD009BF5C3 /* R.generated.swift */; };
+		22AAA8552A62A0FE005071EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAA8542A62A0FE005071EB /* R.generated.swift */; };
+		22AAA85A2A632308005071EB /* InfoPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAA8592A632308005071EB /* InfoPageView.swift */; };
 		22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACB2A6163F100A91420 /* AppDelegate.swift */; };
 		22DC5ACE2A6163F100A91420 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */; };
 		22DC5AD02A6163F100A91420 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACF2A6163F100A91420 /* MainViewController.swift */; };
@@ -28,7 +29,8 @@
 /* Begin PBXFileReference section */
 		0D6E4C8A0DA148F2E5A01A52 /* Pods_Weather_Brick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_Brick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A9504129BEE869DC976C7B /* Pods-Weather Brick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather Brick.release.xcconfig"; path = "Target Support Files/Pods-Weather Brick/Pods-Weather Brick.release.xcconfig"; sourceTree = "<group>"; };
-		22D2D9F72A6177CD009BF5C3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		22AAA8542A62A0FE005071EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		22AAA8592A632308005071EB /* InfoPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPageView.swift; sourceTree = "<group>"; };
 		22DC5AC82A6163F100A91420 /* Weather Brick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Brick.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22DC5ACB2A6163F100A91420 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		22AAA8582A632293005071EB /* SubModules */ = {
+			isa = PBXGroup;
+			children = (
+				22AAA8592A632308005071EB /* InfoPageView.swift */,
+			);
+			path = SubModules;
+			sourceTree = "<group>";
+		};
 		22DC5ABF2A6163F100A91420 = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +99,7 @@
 		22DC5ACA2A6163F100A91420 /* Weather Brick */ = {
 			isa = PBXGroup;
 			children = (
-				22D2D9F72A6177CD009BF5C3 /* R.generated.swift */,
+				22AAA8542A62A0FE005071EB /* R.generated.swift */,
 				22DC5AD92A6163F100A91420 /* Info.plist */,
 				22DC5AE62A616FFF00A91420 /* Supporting Files */,
 				22DC5AE42A616DEA00A91420 /* Extensions */,
@@ -102,6 +112,7 @@
 		22DC5ADF2A61677B00A91420 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				22AAA8582A632293005071EB /* SubModules */,
 				22DC5AE02A61679C00A91420 /* Main */,
 			);
 			path = Modules;
@@ -307,7 +318,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22DC5AD02A6163F100A91420 /* MainViewController.swift in Sources */,
-				22D2D9F82A6177CD009BF5C3 /* R.generated.swift in Sources */,
+				22AAA85A2A632308005071EB /* InfoPageView.swift in Sources */,
+				22AAA8552A62A0FE005071EB /* R.generated.swift in Sources */,
 				22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */,
 				22DC5AEA2A6170ED00A91420 /* UIColorExtension.swift in Sources */,
 				22DC5AF42A61733E00A91420 /* DataModels.swift in Sources */,

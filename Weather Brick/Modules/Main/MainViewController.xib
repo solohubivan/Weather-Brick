@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Weather_Brick" customModuleProvider="target">
             <connections>
+                <outlet property="infoView" destination="Vyj-vJ-UX4" id="CKa-I8-S5M"/>
                 <outlet property="locationPositionLabel" destination="CbK-JX-mdN" id="vyw-oQ-9dK"/>
                 <outlet property="temperatureLabel" destination="8Ec-35-ggZ" id="LWl-7z-bcr"/>
                 <outlet property="view" destination="iN0-l3-epB" id="9N0-zD-c1J"/>
@@ -45,6 +46,11 @@
                 </label>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zav-At-y4G" userLabel="BrickDisplaingWeather">
                     <rect key="frame" x="76" y="105" width="240" height="293"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vyj-vJ-UX4" userLabel="infoView">
+                    <rect key="frame" x="109" y="764" width="171" height="85"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>

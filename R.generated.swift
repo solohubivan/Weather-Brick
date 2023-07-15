@@ -225,7 +225,7 @@ struct _R {
 
       let name = "LaunchScreen"
       func validate() throws {
-
+        if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
     }
   }
