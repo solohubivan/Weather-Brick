@@ -48,6 +48,7 @@
                     <rect key="frame" x="76" y="105" width="240" height="293"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <gestureRecognizers/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vyj-vJ-UX4" userLabel="infoView">
                     <rect key="frame" x="109" y="764" width="171" height="85"/>

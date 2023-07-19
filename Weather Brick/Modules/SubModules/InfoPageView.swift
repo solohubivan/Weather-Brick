@@ -14,8 +14,6 @@ class InfoPageView: UIViewController {
     private var backToMainVCView = UIView()
     private var mainTitleLabel = UILabel()
     
-    let conditionInfo1 = UILabel()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
