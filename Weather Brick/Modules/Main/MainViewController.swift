@@ -23,7 +23,10 @@ class MainViewController: UIViewController {
     
     private var imageBrick = UIImage()
     
+    private var lastLatitude: Double = 0.0
+    private var lastLongitude: Double = 0.0
     
+    private var initialYPosition: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +43,8 @@ class MainViewController: UIViewController {
         setupTemperatureLabel()
         setupWeatherConditionLabel()
         setupLocationPositionLabel()
-        setupTapGestureRecognizer()
+        setupTapGestureRecognizerForInfoView()
+        setupPullToRefresh()
     }
     
     private func setupBackgroundColor() {
@@ -87,19 +91,24 @@ class MainViewController: UIViewController {
     }
     
     private func setupVisualWeatherDisplayBrick() {
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 224, height: 455))
+        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: 224, height: 455))
         
         let imageView = UIImageView(image: imageBrick)
-        imageView.frame = customView.bounds
+        imageView.frame = contentView.bounds
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         
-        customView.addSubview(imageView)
-        
-        visualWeatherDisplayBrickView = customView
-        visualWeatherDisplayBrickView.center.x = view.center.x
+        contentView.addSubview(imageView)
         
         view.addSubview(visualWeatherDisplayBrickView)
+        visualWeatherDisplayBrickView.addConstraints(to_view: view, [
+            .top(anchor: view.topAnchor),
+            .centerX(anchor: view.centerXAnchor),
+            .width(constant: 224),
+            .height(constant: 455)])
+        
+        visualWeatherDisplayBrickView.addSubview(contentView)
+        visualWeatherDisplayBrickView.backgroundColor = .clear
     }
     
     private func setupWindVisualWeatherDisplayBrick() {
@@ -128,7 +137,6 @@ class MainViewController: UIViewController {
         
         view.addSubview(visualWeatherDisplayBrickView)
     }
-    
     
     private func setupInfoView() {
         
@@ -175,7 +183,7 @@ class MainViewController: UIViewController {
         infoView.layer.cornerRadius = 15
     }
     
-    private func setupTapGestureRecognizer() {
+    private func setupTapGestureRecognizerForInfoView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userTapped))
         infoView.addGestureRecognizer(tapGesture)
     }
@@ -189,8 +197,31 @@ class MainViewController: UIViewController {
         }
     }
     
-    //method for updatingDataAndView
-
+    private func setupPullToRefresh() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        visualWeatherDisplayBrickView.addGestureRecognizer(panGesture)
+    }
+    
+    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        
+        if gesture.state == .began {
+            initialYPosition = visualWeatherDisplayBrickView.frame.origin.y
+        } else if gesture.state == .changed {
+            if translation.y > 0 && translation.y >= 10 {
+                let newY = initialYPosition + min(translation.y, 50)
+                visualWeatherDisplayBrickView.frame.origin.y = newY
+            }
+        } else if gesture.state == .ended {
+            animateViewReset()
+            updateWeatherInfo(latitude: lastLatitude, longitude: lastLongitude)
+        }
+    }
+    private func animateViewReset() {
+        UIView.animate(withDuration: 0.3) {
+            self.visualWeatherDisplayBrickView.frame.origin.y = self.initialYPosition
+        }
+    }
     
     //MARK: - Private methods
     
@@ -252,7 +283,6 @@ class MainViewController: UIViewController {
             imageName = R.image.image_stone_cracks()!
         } else {
             switch weather {
-            case "Clouds": imageName = R.image.image_stone_cracks()!
             case "Clear", "Sunny": imageName = R.image.image_stone_normal()!
             case "Rain", "Drizzle": imageName = R.image.image_stone_wet()!
             case "Snow": imageName = R.image.image_stone_snow()!
@@ -336,6 +366,9 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
             updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
+            
+            lastLatitude = lastLocation.coordinate.latitude
+            lastLongitude = lastLocation.coordinate.longitude
         }
     }
 }
