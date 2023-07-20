@@ -25,7 +25,6 @@ class MainViewController: UIViewController {
     
     private var lastLatitude: Double = 0.0
     private var lastLongitude: Double = 0.0
-    
     private var initialYPosition: CGFloat = 0.0
     
     override func viewDidLoad() {
@@ -56,11 +55,11 @@ class MainViewController: UIViewController {
     private func setupTemperatureLabel() {
         view.addSubview(temperatureLabel)
         temperatureLabel.addConstraints(to_view: view, [
-            .leading(anchor: view.leadingAnchor, constant: 16),
-            .top(anchor: view.topAnchor, constant: 461),
-            .bottom(anchor: view.bottomAnchor, constant: 224)])
+            .leading(anchor: view.leadingAnchor, constant: Constants.leadingIndent),
+            .top(anchor: view.topAnchor, constant: Constants.topIndentTemperatureLabel),
+            .bottom(anchor: view.bottomAnchor, constant: Constants.bottomIndentTemperatureLabel)])
         
-        temperatureLabel.textColor = UIColor.standartTextColor
+        temperatureLabel.textColor = UIColor.normalTextColor
         temperatureLabel.font = R.font.ubuntuRegular(size: 83)
         temperatureLabel.text = ""
     }
@@ -68,11 +67,11 @@ class MainViewController: UIViewController {
     private func setupWeatherConditionLabel() {
         view.addSubview(weatherDescribLabel)
         weatherDescribLabel.addConstraints(to_view: view, [
-            .leading(anchor: view.leadingAnchor, constant: 16),
-            .top(anchor: view.topAnchor, constant: 558),
-            .bottom(anchor: view.bottomAnchor, constant: 195)])
+            .leading(anchor: view.leadingAnchor, constant: Constants.leadingIndent),
+            .top(anchor: view.topAnchor, constant: Constants.topIndentWeatherConditionLabel),
+            .bottom(anchor: view.bottomAnchor, constant: Constants.bottomIndentWeatherConditionLabel)])
         
-        weatherDescribLabel.textColor = UIColor.standartTextColor
+        weatherDescribLabel.textColor = UIColor.normalTextColor
         weatherDescribLabel.font = R.font.ubuntuLight(size: 36)
         weatherDescribLabel.text = ""
     }
@@ -81,17 +80,17 @@ class MainViewController: UIViewController {
     private func setupLocationPositionLabel() {
         view.addSubview(locationPositionLabel)
         locationPositionLabel.addConstraints(to_view: view, [
-            .top(anchor: view.topAnchor, constant: 699),
-            .bottom(anchor: view.bottomAnchor, constant: 90),
+            .top(anchor: view.topAnchor, constant: Constants.topIndentLocationPositionLabeLabel),
+            .bottom(anchor: view.bottomAnchor, constant: Constants.bottomIndentLocationPositionLabel),
             .centerX(anchor: view.centerXAnchor)])
         
-        locationPositionLabel.textColor = UIColor.standartTextColor
+        locationPositionLabel.textColor = UIColor.normalTextColor
         locationPositionLabel.font = R.font.ubuntuMedium(size: 17)
         locationPositionLabel.text = ""
     }
     
     private func setupVisualWeatherDisplayBrick() {
-        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: 224, height: 455))
+        let contentView = UIView(frame: CGRect(x: Constants.zero, y: Constants.zero, width: Constants.widthVisualWeatherDisplayBrickView, height: Constants.heighVisualWeatherDisplayBrickView))
         
         let imageView = UIImageView(image: imageBrick)
         imageView.frame = contentView.bounds
@@ -104,15 +103,15 @@ class MainViewController: UIViewController {
         visualWeatherDisplayBrickView.addConstraints(to_view: view, [
             .top(anchor: view.topAnchor),
             .centerX(anchor: view.centerXAnchor),
-            .width(constant: 224),
-            .height(constant: 455)])
+            .width(constant: Constants.widthVisualWeatherDisplayBrickView),
+            .height(constant: Constants.heighVisualWeatherDisplayBrickView)])
         
         visualWeatherDisplayBrickView.addSubview(contentView)
         visualWeatherDisplayBrickView.backgroundColor = .clear
     }
     
     private func setupWindVisualWeatherDisplayBrick() {
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 224, height: 455))
+        let customView = UIView(frame: CGRect(x: Constants.zero, y: Constants.zero, width: Constants.widthVisualWeatherDisplayBrickView, height: Constants.heighVisualWeatherDisplayBrickView))
         
         let imageView = UIImageView(image: imageBrick)
         imageView.frame = customView.bounds
@@ -122,14 +121,14 @@ class MainViewController: UIViewController {
         customView.addSubview(imageView)
         visualWeatherDisplayBrickView = customView
         
-        let angleInDegrees: CGFloat = 15.0
-        let angleInRadians = angleInDegrees * .pi / 180.0
-        visualWeatherDisplayBrickView.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+        let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitate
+        let angleInRadians = angleInDegrees * .pi / Constants.openCorner
+        visualWeatherDisplayBrickView.layer.anchorPoint = CGPoint(x: Constants.anchorPointX, y: Constants.anchorPointY)
         
-        visualWeatherDisplayBrickView.frame.origin.y = -8
+        visualWeatherDisplayBrickView.frame.origin.y = Constants.positionYForWindView
         visualWeatherDisplayBrickView.center.x = view.center.x
         
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: Constants.animateDurationOneSec, animations: {
                 self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
             }, completion: { _ in
                 self.animateRotation()
@@ -140,47 +139,46 @@ class MainViewController: UIViewController {
     
     private func setupInfoView() {
         
-        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: 175, height: 85))
+        let contentView = UIView(frame: CGRect(x: Constants.zero, y: Constants.zero, width: Constants.widthInfoView, height: Constants.heighInfoView))
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = contentView.bounds
         gradientLayer.colors = [
-            UIColor(red: 1, green: 0.6, blue: 0.375, alpha: 1).cgColor,
-            UIColor(red: 0.977, green: 0.315, blue: 0.106, alpha: 1).cgColor
+            UIColor.infoViewFirstGradientColor, UIColor.infoViewSecondGradientColor
         ]
-        gradientLayer.locations = [0, 1]
-        gradientLayer.startPoint = CGPoint(x: 0.3, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0.3, y: 0.8)
+        gradientLayer.locations = [Constants.gradientLocationZero, Constants.gradientLocationOne]
+        gradientLayer.startPoint = CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYBeginCoordinate)
+        gradientLayer.endPoint = CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate)
         
-        contentView.layer.insertSublayer(gradientLayer, at: 0)
-        contentView.layer.cornerRadius = 15
+        contentView.layer.insertSublayer(gradientLayer, at: Constants.contentViewLayer)
+        contentView.layer.cornerRadius = Constants.cornerRadius
         contentView.layer.masksToBounds = true
         
         let label = UILabel()
-        label.text = "INFO"
-        label.textColor = UIColor.standartTextColor
+        label.text = R.string.localizable.info()
+        label.textColor = UIColor.normalTextColor
         label.textAlignment = .center
         label.font = R.font.ubuntuBold(size: 18)
         
         contentView.addSubview(label)
         label.addConstraints(to_view: contentView, [
-            .top(anchor: contentView.topAnchor, constant: 16),
-            .bottom(anchor: contentView.bottomAnchor, constant: 47),
+            .top(anchor: contentView.topAnchor, constant: Constants.topIndentLabelInInfoView),
+            .bottom(anchor: contentView.bottomAnchor, constant: Constants.bottomIndentLabelInInfoView),
             .centerX(anchor: contentView.centerXAnchor)])
         
         view.addSubview(infoView)
         infoView.addConstraints(to_view: view, [
             .centerX(anchor: view.centerXAnchor),
-            .bottom(anchor: view.bottomAnchor, constant: -22),
-            .height(constant: 85),
-            .width(constant: 175)])
+            .bottom(anchor: view.bottomAnchor, constant: Constants.bottomIndentInfoView),
+            .height(constant: Constants.heighInfoView),
+            .width(constant: Constants.widthInfoView)])
         infoView.addSubview(contentView)
         
         infoView.layer.shadowColor = UIColor.black.cgColor
-        infoView.layer.shadowOpacity = 0.5
-        infoView.layer.shadowOffset = CGSize(width: 2, height: 4)
-        infoView.layer.shadowRadius = 4
-        infoView.layer.cornerRadius = 15
+        infoView.layer.shadowOpacity = Constants.infoViewShadowOpacity
+        infoView.layer.shadowOffset = CGSize(width: Constants.infoViewShadowOffsetWidth, height: Constants.infoViewShadowOffsetHeigh)
+        infoView.layer.shadowRadius = Constants.infoViewShadowRadius
+        infoView.layer.cornerRadius = Constants.cornerRadius
     }
     
     private func setupTapGestureRecognizerForInfoView() {
@@ -208,8 +206,8 @@ class MainViewController: UIViewController {
         if gesture.state == .began {
             initialYPosition = visualWeatherDisplayBrickView.frame.origin.y
         } else if gesture.state == .changed {
-            if translation.y > 0 && translation.y >= 10 {
-                let newY = initialYPosition + min(translation.y, 50)
+            if translation.y > Constants.zero && translation.y >= Constants.ten {
+                let newY = initialYPosition + min(translation.y, Constants.fifty)
                 visualWeatherDisplayBrickView.frame.origin.y = newY
             }
         } else if gesture.state == .ended {
@@ -218,7 +216,7 @@ class MainViewController: UIViewController {
         }
     }
     private func animateViewReset() {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: Constants.animateDuration) {
             self.visualWeatherDisplayBrickView.frame.origin.y = self.initialYPosition
         }
     }
@@ -241,7 +239,7 @@ class MainViewController: UIViewController {
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&units=metric&appid=515fe6b9d0a1c97ce56f86231fdf5a97")!
         let task = session.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
-                print("DataTask error: \(error!.localizedDescription)")
+                print("\(Constants.dataTaskError): \(error!.localizedDescription)")
                 return
             }
             
@@ -279,21 +277,21 @@ class MainViewController: UIViewController {
         
         var imageName = UIImage()
         
-        if temperature > 30 {
+        if temperature > Constants.highTemperature {
             imageName = R.image.image_stone_cracks()!
         } else {
             switch weather {
-            case "Clear", "Sunny": imageName = R.image.image_stone_normal()!
-            case "Rain", "Drizzle": imageName = R.image.image_stone_wet()!
-            case "Snow": imageName = R.image.image_stone_snow()!
-            case "Fog", "Haze", "Mist": imageName = applyBlurEffect(to: R.image.image_stone_normal()!)!
+            case Constants.clearWeatherCase, Constants.sunnyWeatherCase: imageName = R.image.image_stone_normal()!
+            case Constants.rainWeatherCase, Constants.drizzleWeatherCase: imageName = R.image.image_stone_wet()!
+            case Constants.snowWeatherCase: imageName = R.image.image_stone_snow()!
+            case Constants.fogWeatherCase, Constants.hazeWeatherCase, Constants.mistWeatherCase: imageName = applyBlurEffect(to: R.image.image_stone_normal()!)!
             default:
                 imageName = R.image.image_stone_normal()!
             }
         }
         imageBrick = imageName
         
-        if windSpeed > 10 {
+        if windSpeed > Constants.ten {
             setupWindVisualWeatherDisplayBrick()
         } else {
             setupVisualWeatherDisplayBrick()
@@ -302,9 +300,9 @@ class MainViewController: UIViewController {
     
     private func applyBlurEffect(to image: UIImage) -> UIImage? {
         if let ciImage = CIImage(image: image) {
-            let blurFilter = CIFilter(name: "CIGaussianBlur")
+            let blurFilter = CIFilter(name: Constants.blurFilterName)
             blurFilter?.setValue(ciImage, forKey: kCIInputImageKey)
-            blurFilter?.setValue(5.0, forKey: kCIInputRadiusKey)
+            blurFilter?.setValue(Constants.blurEffectValue, forKey: kCIInputRadiusKey)
             
             if let outputCIImage = blurFilter?.outputImage {
                 let context = CIContext(options: nil)
@@ -338,10 +336,10 @@ class MainViewController: UIViewController {
     }
     
     private func animateBackRotation() {
-        let angleInDegrees: CGFloat = -15.0
-        let angleInRadians = angleInDegrees * .pi / 180.0
+        let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitateBack
+        let angleInRadians = angleInDegrees * .pi / Constants.openCorner
 
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
             self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
         }, completion: { _ in
             self.animateRotation()
@@ -349,10 +347,10 @@ class MainViewController: UIViewController {
     }
     
     private func animateRotation() {
-        let angleInDegrees: CGFloat = 15.0
-        let angleInRadians = angleInDegrees * .pi / 180.0
+        let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitate
+        let angleInRadians = angleInDegrees * .pi / Constants.openCorner
 
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
             self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
         }, completion: { _ in
             self.animateBackRotation()
@@ -360,8 +358,7 @@ class MainViewController: UIViewController {
     }
 }
 
-
-//MARK: - extension to action after user location geting
+//MARK: - extension to action after user's location getting
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
@@ -376,6 +373,63 @@ extension MainViewController: CLLocationManagerDelegate {
 //MARK: - Constants
 extension MainViewController {
     private enum Constants {
+        static let blurFilterName: String = "CIGaussianBlur"
+        static let dataTaskError: String = "DataTask error"
+        static let clearWeatherCase: String = "Clear"
+        static let sunnyWeatherCase: String = "Sunny"
+        static let rainWeatherCase: String = "Rain"
+        static let drizzleWeatherCase: String = "Drizzle"
+        static let snowWeatherCase: String = "Snow"
+        static let fogWeatherCase: String = "Fog"
+        static let hazeWeatherCase: String = "Haze"
+        static let mistWeatherCase: String = "Mist"
+        
         static let iconSize: CGFloat = 16
+        
+        static let leadingIndent: CGFloat = 16
+        static let topIndentTemperatureLabel: CGFloat = 461
+        static let bottomIndentTemperatureLabel: CGFloat = 224
+        static let topIndentWeatherConditionLabel: CGFloat = 558
+        static let bottomIndentWeatherConditionLabel: CGFloat = 195
+        static let topIndentLocationPositionLabeLabel: CGFloat = 699
+        static let bottomIndentLocationPositionLabel: CGFloat = 90
+        static let topIndentLabelInInfoView: CGFloat = 16
+        static let bottomIndentLabelInInfoView: CGFloat = 47
+        static let bottomIndentInfoView: CGFloat = -22
+        
+        static let zero: CGFloat = 0
+        static let ten: CGFloat = 10
+        static let fifty: CGFloat = 50
+        static let widthVisualWeatherDisplayBrickView: CGFloat = 224
+        static let heighVisualWeatherDisplayBrickView: CGFloat = 455
+        static let widthInfoView: CGFloat = 175
+        static let heighInfoView: CGFloat = 85
+        
+        static let angleInDegreesForWindImitate: CGFloat = 15.0
+        static let angleInDegreesForWindImitateBack: CGFloat = -15.0
+        static let openCorner: CGFloat = 180
+        static let anchorPointX: CGFloat = 0.5
+        static let anchorPointY: CGFloat = 0
+        static let positionYForWindView: CGFloat = -8
+        static let gradientXCoordinate: CGFloat = 0.3
+        static let gradientYBeginCoordinate: CGFloat = 0
+        static let gradientYEndCoordinate: CGFloat = 0.8
+        static let infoViewShadowOpacity: Float = 0.5
+        static let infoViewShadowOffsetWidth: CGFloat = 2
+        static let infoViewShadowOffsetHeigh: CGFloat = 4
+        static let infoViewShadowRadius: CGFloat = 4
+        
+        static let gradientLocationZero: NSNumber = 0
+        static let gradientLocationOne: NSNumber = 1
+        static let contentViewLayer: UInt32 = 0
+
+        static let animateDurationOneSec: TimeInterval = 1
+        static let animateDurationTwoSec: TimeInterval = 2
+        static let animateDuration: TimeInterval = 0.3
+        
+        static let highTemperature: Int = 30
+        static let blurEffectValue: CGFloat = 5.0
+        
+        static let cornerRadius: CGFloat = 15
     }
 }

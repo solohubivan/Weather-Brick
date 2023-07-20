@@ -5,3 +5,13 @@
   Created by Ivan Solohub on 14.07.2023.
   
 */
+
+"info" = "INFO";
+"hide" = "Hide";
+"brick_is_wet_raining" = "Brick is wet - raining";
+"brick_is_dry_sunny" = "Brick is dry - sunny";
+"brick_is_hard_to_see_fog" = "Brick is hard to see - fog";
+"brick_with_cracks_very_hot" = "Brick with cracks - very hot";
+"brick_with_snow_snow" = "Brick with snow - snow";
+"brick_is_swinging_windy" = "Brick is swinging - windy";
+"brick_is_gone_no_internet" = "Brick is gone - No Internet";

@@ -69,9 +69,54 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 0 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 9 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
+
+      /// Value: Brick is dry - sunny
+      ///
+      /// Key: brick_is_dry_sunny
+      var brick_is_dry_sunny: RswiftResources.StringResource { .init(key: "brick_is_dry_sunny", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Brick is gone - No Internet
+      ///
+      /// Key: brick_is_gone_no_internet
+      var brick_is_gone_no_internet: RswiftResources.StringResource { .init(key: "brick_is_gone_no_internet", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Brick is hard to see - fog
+      ///
+      /// Key: brick_is_hard_to_see_fog
+      var brick_is_hard_to_see_fog: RswiftResources.StringResource { .init(key: "brick_is_hard_to_see_fog", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Brick is swinging - windy
+      ///
+      /// Key: brick_is_swinging_windy
+      var brick_is_swinging_windy: RswiftResources.StringResource { .init(key: "brick_is_swinging_windy", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Brick is wet - raining
+      ///
+      /// Key: brick_is_wet_raining
+      var brick_is_wet_raining: RswiftResources.StringResource { .init(key: "brick_is_wet_raining", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Brick with cracks - very hot
+      ///
+      /// Key: brick_with_cracks_very_hot
+      var brick_with_cracks_very_hot: RswiftResources.StringResource { .init(key: "brick_with_cracks_very_hot", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Brick with snow - snow
+      ///
+      /// Key: brick_with_snow_snow
+      var brick_with_snow_snow: RswiftResources.StringResource { .init(key: "brick_with_snow_snow", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Hide
+      ///
+      /// Key: hide
+      var hide: RswiftResources.StringResource { .init(key: "hide", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: INFO
+      ///
+      /// Key: info
+      var info: RswiftResources.StringResource { .init(key: "info", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
     }
   }
 
@@ -192,9 +237,12 @@ struct _R {
     var ubuntuRegularTtf: RswiftResources.FileResource { .init(name: "Ubuntu-Regular", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 1 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 2 nibs.
   struct nib {
     let bundle: Foundation.Bundle
+
+    /// Nib `InfoPageView`.
+    var infoPageView: RswiftResources.NibReference<UIKit.UIView> { .init(name: "InfoPageView", bundle: bundle) }
 
     /// Nib `MainViewController`.
     var mainViewController: RswiftResources.NibReference<UIKit.UIView> { .init(name: "MainViewController", bundle: bundle) }
