@@ -40,13 +40,13 @@ class InfoPageView: UIViewController {
     }
     
     private func setupDescribtionView() {
-        contentView = UIView(frame: CGRect(x: Constants.zero, y: Constants.zero, width: Constants.widthContentView, height: Constants.heighView))
-        contentView.backgroundColor = UIColor.describtionViewBackgroundColor
+        contentView = UIView(frame: CGRect(x: .zero, y: .zero, width: Constants.widthContentView, height: Constants.heighView))
+        contentView.backgroundColor = UIColor.describtionViewOrangeBackgroundColor
         contentView.layer.cornerRadius = Constants.cornerRadius
         
-        let orangeShadowPath = UIBezierPath(roundedRect: contentView.bounds.insetBy(dx: Constants.dx, dy: Constants.zero), cornerRadius: contentView.layer.cornerRadius)
-        contentView.layer.shadowColor = UIColor.describtionViewShadowColor
-        contentView.layer.shadowOffset = CGSize(width: Constants.contentViewShadowOffsetWidth, height: Constants.zero)
+        let orangeShadowPath = UIBezierPath(roundedRect: contentView.bounds.insetBy(dx: Constants.dx, dy: .zero), cornerRadius: contentView.layer.cornerRadius)
+        contentView.layer.shadowColor = UIColor.describtionViewOrangeShadowColor
+        contentView.layer.shadowOffset = CGSize(width: Constants.contentViewShadowOffsetWidth, height: .zero)
         contentView.layer.shadowOpacity = Constants.contentViewShadowOpacity
         contentView.layer.shadowRadius = Constants.contentViewShadowRadius
         contentView.layer.shadowPath = orangeShadowPath.cgPath
@@ -61,7 +61,7 @@ class InfoPageView: UIViewController {
 
         brickConditionsDescribtionView.layer.cornerRadius = Constants.cornerRadius
         
-        brickConditionsDescribtionView.layer.shadowOffset = CGSize(width: Constants.zero, height: Constants.brickConditionsDescribtionViewShadowOffsetHeigh)
+        brickConditionsDescribtionView.layer.shadowOffset = CGSize(width: .zero, height: Constants.brickConditionsDescribtionViewShadowOffsetHeigh)
         brickConditionsDescribtionView.layer.shadowOpacity = Constants.brickConditionsDescribtionViewShadowOpacity
         brickConditionsDescribtionView.layer.shadowRadius = Constants.brickConditionsDescribtionViewShadowRadius
     }
@@ -75,7 +75,7 @@ class InfoPageView: UIViewController {
         
         mainTitleLabel.text = R.string.localizable.info()
         mainTitleLabel.font = R.font.ubuntuBold(size: 18)
-        mainTitleLabel.textColor = UIColor.normalTextColor
+        mainTitleLabel.textColor = UIColor.normalBlackTextColor
     }
     
     private func setupConditionInfo() {
@@ -146,7 +146,7 @@ class InfoPageView: UIViewController {
     
     private func setupInfoLabels(label: UILabel) {
         label.font = R.font.ubuntuRegular(size: 15)
-        label.textColor = UIColor.normalTextColor
+        label.textColor = UIColor.normalBlackTextColor
     }
     
     private func setupBackToMainVCView() {
@@ -157,13 +157,13 @@ class InfoPageView: UIViewController {
             .width(constant: Constants.widthBackToMainVCView),
             .centerX(anchor: contentView.centerXAnchor)])
         backToMainVCView.layer.borderWidth = Constants.borderWidth
-        backToMainVCView.layer.borderColor = UIColor.backToMainVCLabelBorderColor
+        backToMainVCView.layer.borderColor = UIColor.backToMainVCViewGreyColor.cgColor
         backToMainVCView.layer.cornerRadius = Constants.cornerRadius
         backToMainVCView.backgroundColor = .clear
         
         let label = UILabel()
         label.text = R.string.localizable.hide()
-        label.textColor = UIColor.backToMainVCLabelTextColor
+        label.textColor = UIColor.backToMainVCViewGreyColor
         label.font = R.font.ubuntuMedium(size: 15)
         label.textAlignment = .center
         
@@ -189,8 +189,7 @@ class InfoPageView: UIViewController {
 extension InfoPageView {
     private enum Constants {
         static let cornerRadius: CGFloat = 15
-        
-        static let zero: CGFloat = 0
+
         static let dx: CGFloat = -5
         
         static let contentViewShadowOffsetWidth: CGFloat = 4

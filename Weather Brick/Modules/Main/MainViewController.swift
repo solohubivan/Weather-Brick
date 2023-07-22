@@ -59,7 +59,7 @@ class MainViewController: UIViewController {
             .top(anchor: view.topAnchor, constant: Constants.topIndentTemperatureLabel),
             .bottom(anchor: view.bottomAnchor, constant: Constants.bottomIndentTemperatureLabel)])
         
-        temperatureLabel.textColor = UIColor.normalTextColor
+        temperatureLabel.textColor = UIColor.normalBlackTextColor
         temperatureLabel.font = R.font.ubuntuRegular(size: 83)
         temperatureLabel.text = ""
     }
@@ -71,7 +71,7 @@ class MainViewController: UIViewController {
             .top(anchor: view.topAnchor, constant: Constants.topIndentWeatherConditionLabel),
             .bottom(anchor: view.bottomAnchor, constant: Constants.bottomIndentWeatherConditionLabel)])
         
-        weatherDescribLabel.textColor = UIColor.normalTextColor
+        weatherDescribLabel.textColor = UIColor.normalBlackTextColor
         weatherDescribLabel.font = R.font.ubuntuLight(size: 36)
         weatherDescribLabel.text = ""
     }
@@ -84,13 +84,13 @@ class MainViewController: UIViewController {
             .bottom(anchor: view.bottomAnchor, constant: Constants.bottomIndentLocationPositionLabel),
             .centerX(anchor: view.centerXAnchor)])
         
-        locationPositionLabel.textColor = UIColor.normalTextColor
+        locationPositionLabel.textColor = UIColor.normalBlackTextColor
         locationPositionLabel.font = R.font.ubuntuMedium(size: 17)
         locationPositionLabel.text = ""
     }
     
     private func setupVisualWeatherDisplayBrick() {
-        let contentView = UIView(frame: CGRect(x: Constants.zero, y: Constants.zero, width: Constants.widthVisualWeatherDisplayBrickView, height: Constants.heighVisualWeatherDisplayBrickView))
+        let contentView = UIView(frame: CGRect(x: .zero, y: .zero, width: Constants.widthVisualWeatherDisplayBrickView, height: Constants.heighVisualWeatherDisplayBrickView))
         
         let imageView = UIImageView(image: imageBrick)
         imageView.frame = contentView.bounds
@@ -111,7 +111,7 @@ class MainViewController: UIViewController {
     }
     
     private func setupWindVisualWeatherDisplayBrick() {
-        let customView = UIView(frame: CGRect(x: Constants.zero, y: Constants.zero, width: Constants.widthVisualWeatherDisplayBrickView, height: Constants.heighVisualWeatherDisplayBrickView))
+        let customView = UIView(frame: CGRect(x: .zero, y: .zero, width: Constants.widthVisualWeatherDisplayBrickView, height: Constants.heighVisualWeatherDisplayBrickView))
         
         let imageView = UIImageView(image: imageBrick)
         imageView.frame = customView.bounds
@@ -139,12 +139,12 @@ class MainViewController: UIViewController {
     
     private func setupInfoView() {
         
-        let contentView = UIView(frame: CGRect(x: Constants.zero, y: Constants.zero, width: Constants.widthInfoView, height: Constants.heighInfoView))
+        let contentView = UIView(frame: CGRect(x: .zero, y: .zero, width: Constants.widthInfoView, height: Constants.heighInfoView))
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = contentView.bounds
         gradientLayer.colors = [
-            UIColor.infoViewFirstGradientColor, UIColor.infoViewSecondGradientColor
+            UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor
         ]
         gradientLayer.locations = [Constants.gradientLocationZero, Constants.gradientLocationOne]
         gradientLayer.startPoint = CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYBeginCoordinate)
@@ -156,7 +156,7 @@ class MainViewController: UIViewController {
         
         let label = UILabel()
         label.text = R.string.localizable.info()
-        label.textColor = UIColor.normalTextColor
+        label.textColor = UIColor.normalBlackTextColor
         label.textAlignment = .center
         label.font = R.font.ubuntuBold(size: 18)
         
@@ -206,7 +206,7 @@ class MainViewController: UIViewController {
         if gesture.state == .began {
             initialYPosition = visualWeatherDisplayBrickView.frame.origin.y
         } else if gesture.state == .changed {
-            if translation.y > Constants.zero && translation.y >= Constants.ten {
+            if translation.y > .zero && translation.y >= Constants.ten {
                 let newY = initialYPosition + min(translation.y, Constants.fifty)
                 visualWeatherDisplayBrickView.frame.origin.y = newY
             }
@@ -397,7 +397,6 @@ extension MainViewController {
         static let bottomIndentLabelInInfoView: CGFloat = 47
         static let bottomIndentInfoView: CGFloat = -22
         
-        static let zero: CGFloat = 0
         static let ten: CGFloat = 10
         static let fifty: CGFloat = 50
         static let widthVisualWeatherDisplayBrickView: CGFloat = 224
