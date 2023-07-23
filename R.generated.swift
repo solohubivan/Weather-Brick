@@ -248,6 +248,7 @@ struct _R {
     var mainViewController: RswiftResources.NibReference<UIKit.UIView> { .init(name: "MainViewController", bundle: bundle) }
 
     func validate() throws {
+      if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'InfoPageView', but couldn't be loaded.") }
       if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'MainViewController', but couldn't be loaded.") }
     }
   }

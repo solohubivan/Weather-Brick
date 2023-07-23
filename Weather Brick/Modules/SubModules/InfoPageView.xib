@@ -11,7 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoPageView" customModule="Weather_Brick" customModuleProvider="target">
             <connections>
                 <outlet property="backToMainVCView" destination="WdG-qS-EjM" id="Rlb-Sr-2oD"/>
-                <outlet property="brickConditionsDescribtionView" destination="hhZ-8E-YLH" id="2HJ-za-oL3"/>
+                <outlet property="brickConditionsDescribView" destination="hhZ-8E-YLH" id="2HJ-za-oL3"/>
+                <outlet property="contentView" destination="VfS-6o-3EJ" id="KGv-26-Fyu"/>
                 <outlet property="mainTitleLabel" destination="ibf-vw-wkM" id="8OD-59-TeB"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iKa-9k-guy"/>
             </connections>
@@ -21,32 +22,64 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhZ-8E-YLH" userLabel="conditionDescribtionView">
-                    <rect key="frame" x="76" y="212" width="240" height="457"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_background" translatesAutoresizingMaskIntoConstraints="NO" id="gnG-Om-ErS">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhZ-8E-YLH" userLabel="conditionDescribtionView">
+                    <rect key="frame" x="62" y="240" width="269" height="372"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-vw-wkM" userLabel="titleLabel">
-                            <rect key="frame" x="99" y="38" width="42" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfS-6o-3EJ" userLabel="ContentView">
+                            <rect key="frame" x="0.0" y="0.0" width="265" height="372"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdG-qS-EjM" userLabel="backToMainVCView">
+                            <rect key="frame" x="77" y="317" width="115" height="31"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="3i1-bH-8nH"/>
+                                <constraint firstAttribute="width" constant="115" id="Al7-9O-gYu"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-vw-wkM" userLabel="titleLabel">
+                            <rect key="frame" x="113.66666666666666" y="24" width="42" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="Ue2-VL-9IG"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdG-qS-EjM" userLabel="backToMainVCView">
-                            <rect key="frame" x="65" y="388" width="110" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="VfS-6o-3EJ" firstAttribute="top" secondItem="hhZ-8E-YLH" secondAttribute="top" id="9qI-yj-Im2"/>
+                        <constraint firstAttribute="width" constant="269" id="EVK-T5-B88"/>
+                        <constraint firstAttribute="bottom" secondItem="WdG-qS-EjM" secondAttribute="bottom" constant="24" id="JsC-We-cuN"/>
+                        <constraint firstAttribute="height" constant="372" id="QRU-dv-JjF"/>
+                        <constraint firstItem="VfS-6o-3EJ" firstAttribute="leading" secondItem="hhZ-8E-YLH" secondAttribute="leading" id="U7p-71-kvW"/>
+                        <constraint firstItem="ibf-vw-wkM" firstAttribute="top" secondItem="hhZ-8E-YLH" secondAttribute="top" constant="24" id="Wjj-eA-fQo"/>
+                        <constraint firstItem="WdG-qS-EjM" firstAttribute="centerX" secondItem="hhZ-8E-YLH" secondAttribute="centerX" id="Yei-Jw-hnI"/>
+                        <constraint firstAttribute="bottom" secondItem="VfS-6o-3EJ" secondAttribute="bottom" id="bwQ-cZ-QHL"/>
+                        <constraint firstAttribute="trailing" secondItem="VfS-6o-3EJ" secondAttribute="trailing" constant="4" id="dcP-oj-bpM"/>
+                        <constraint firstItem="ibf-vw-wkM" firstAttribute="centerX" secondItem="hhZ-8E-YLH" secondAttribute="centerX" id="udD-VB-iQG"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="gnG-Om-ErS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GVX-bY-QlJ"/>
+                <constraint firstItem="hhZ-8E-YLH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Zg4-rM-8yV"/>
+                <constraint firstAttribute="bottom" secondItem="gnG-Om-ErS" secondAttribute="bottom" id="b9E-2x-Xma"/>
+                <constraint firstItem="gnG-Om-ErS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="deI-lo-yNn"/>
+                <constraint firstAttribute="trailing" secondItem="gnG-Om-ErS" secondAttribute="trailing" id="mfp-bl-XRE"/>
+                <constraint firstItem="hhZ-8E-YLH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sPZ-Af-SfV"/>
+            </constraints>
             <point key="canvasLocation" x="34.351145038167935" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
+        <image name="image_background" width="375" height="811"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

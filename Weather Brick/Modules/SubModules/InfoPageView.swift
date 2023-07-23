@@ -9,38 +9,38 @@ import UIKit
 
 class InfoPageView: UIViewController {
     
-    @IBOutlet weak var brickConditionsDescribtionView: UIView!
+    @IBOutlet weak var brickConditionsDescribView: UIView!
+    
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var backToMainVCView: UIView!
-    
-    private var contentView = UIView()
-    
+    @IBOutlet weak var contentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupBackground()
         setupUI()
     }
     
     //MARK: - Private methods
     private func setupUI() {
-        setupDescribtionView()
+        setupBrickConditionDescribView()
         setupTitleLabel()
         setupBackToMainVCView()
         setupTapGestureForBackToMainView()
-        setupConditionInfo()
+   //     setupConditionInfo()
+    }
+
+    private func setupBrickConditionDescribView() {
+        setupContentView()
+        
+        brickConditionsDescribView.layer.cornerRadius = Constants.cornerRadius
+        
+        brickConditionsDescribView.layer.shadowOffset = CGSize(width: .zero, height: Constants.describtionViewShadowOffsetHeigh)
+        brickConditionsDescribView.layer.shadowOpacity = Constants.describtionViewShadowOpacity
+        brickConditionsDescribView.layer.shadowRadius = Constants.describtionViewShadowRadius
     }
     
-    private func setupBackground() {
-        view.backgroundColor = .white
-        let backgroundImageView = UIImageView(frame: view.bounds)
-        backgroundImageView.image = R.image.image_background()
-        view.addSubview(backgroundImageView)
-    }
-    
-    private func setupDescribtionView() {
-        contentView = UIView(frame: CGRect(x: .zero, y: .zero, width: Constants.widthContentView, height: Constants.heighView))
+    private func setupContentView() {
         contentView.backgroundColor = UIColor.describtionViewOrangeBackgroundColor
         contentView.layer.cornerRadius = Constants.cornerRadius
         
@@ -50,34 +50,14 @@ class InfoPageView: UIViewController {
         contentView.layer.shadowOpacity = Constants.contentViewShadowOpacity
         contentView.layer.shadowRadius = Constants.contentViewShadowRadius
         contentView.layer.shadowPath = orangeShadowPath.cgPath
-        
-        view.addSubview(brickConditionsDescribtionView)
-        brickConditionsDescribtionView.addConstraints(to_view: view, [
-            .top(anchor: view.topAnchor, constant: Constants.topIndentDescribtionView),
-            .centerX(anchor: view.centerXAnchor),
-            .height(constant: Constants.heighView),
-            .width(constant: Constants.describtionViewWidth)])
-        brickConditionsDescribtionView.addSubview(contentView)
-
-        brickConditionsDescribtionView.layer.cornerRadius = Constants.cornerRadius
-        
-        brickConditionsDescribtionView.layer.shadowOffset = CGSize(width: .zero, height: Constants.describtionViewShadowOffsetHeigh)
-        brickConditionsDescribtionView.layer.shadowOpacity = Constants.describtionViewShadowOpacity
-        brickConditionsDescribtionView.layer.shadowRadius = Constants.describtionViewShadowRadius
     }
-    
+  
     private func setupTitleLabel() {
-        view.addSubview(mainTitleLabel)
-        mainTitleLabel.addConstraints(to_view: contentView, [
-            .top(anchor: contentView.topAnchor, constant: Constants.topIdent),
-            .centerX(anchor: contentView.centerXAnchor),
-            .height(constant: Constants.heighTitleLabel)])
-        
         mainTitleLabel.text = R.string.localizable.info()
         mainTitleLabel.font = R.font.ubuntuBold(size: 18)
         mainTitleLabel.textColor = UIColor.normalBlackTextColor
     }
-    
+  /*
     private func setupConditionInfo() {
         
         let labelInfo1 = UILabel()
@@ -143,32 +123,26 @@ class InfoPageView: UIViewController {
         setupInfoLabels(label: labelInfo7)
         labelInfo7.text = R.string.localizable.brick_is_gone_no_internet()
     }
-    
+    */
     private func setupInfoLabels(label: UILabel) {
         label.font = R.font.ubuntuRegular(size: 15)
         label.textColor = UIColor.normalBlackTextColor
     }
     
     private func setupBackToMainVCView() {
-        view.addSubview(backToMainVCView)
-        backToMainVCView.addConstraints(to_view: contentView, [
-            .bottom(anchor: contentView.bottomAnchor, constant: Constants.bottomIndentBackToMainVCView),
-            .height(constant: Constants.heightBackToMainVCView),
-            .width(constant: Constants.widthBackToMainVCView),
-            .centerX(anchor: contentView.centerXAnchor)])
         backToMainVCView.layer.borderWidth = Constants.borderWidth
         backToMainVCView.layer.borderColor = UIColor.backToMainVCViewGreyColor.cgColor
         backToMainVCView.layer.cornerRadius = Constants.cornerRadius
         backToMainVCView.backgroundColor = .clear
         
-        let label = UILabel()
-        label.text = R.string.localizable.hide()
-        label.textColor = UIColor.backToMainVCViewGreyColor
-        label.font = R.font.ubuntuMedium(size: 15)
-        label.textAlignment = .center
+        let labelInside = UILabel()
+        labelInside.text = R.string.localizable.hide()
+        labelInside.textColor = UIColor.backToMainVCViewGreyColor
+        labelInside.font = R.font.ubuntuMedium(size: 15)
+        labelInside.textAlignment = .center
         
-        backToMainVCView.addSubview(label)
-        label.addConstraints(to_view: backToMainVCView)
+        backToMainVCView.addSubview(labelInside)
+        labelInside.addConstraints(to_view: backToMainVCView)
     }
     
     private func setupTapGestureForBackToMainView() {
@@ -198,20 +172,9 @@ extension InfoPageView {
         static let describtionViewShadowOffsetHeigh: CGFloat = 5
         static let describtionViewShadowOpacity: Float = 0.3
         static let describtionViewShadowRadius: CGFloat = 2
-        
-        static let widthContentView: CGFloat = 265
-        static let describtionViewWidth: CGFloat = 269
-        static let heighView: CGFloat = 372
-        
-        static let topIndentDescribtionView: CGFloat = 220
-        static let topIdent: CGFloat = 24
-        static let heighTitleLabel: CGFloat = 22
+
         static let heighInfoLabel: CGFloat = 30
         static let leadingIndent: CGFloat = 30
-        
-        static let bottomIndentBackToMainVCView: CGFloat = 24
-        static let heightBackToMainVCView: CGFloat = 31
-        static let widthBackToMainVCView: CGFloat = 115
         
         static let borderWidth: CGFloat = 1
     }
