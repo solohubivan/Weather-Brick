@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Weather_Brick" customModuleProvider="target">
             <connections>
+                <outlet property="bricksImageView" destination="1iV-KO-NfW" id="pWv-fh-1sw"/>
                 <outlet property="infoView" destination="Vyj-vJ-UX4" id="CKa-I8-S5M"/>
                 <outlet property="locationPositionLabel" destination="CbK-JX-mdN" id="vyw-oQ-9dK"/>
                 <outlet property="temperatureLabel" destination="8Ec-35-ggZ" id="LWl-7z-bcr"/>
@@ -23,45 +24,78 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ec-35-ggZ" userLabel="temperatureLabel">
-                    <rect key="frame" x="45" y="597" width="36" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_background" translatesAutoresizingMaskIntoConstraints="NO" id="eav-VR-tor">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ec-35-ggZ" userLabel="temperatureLabel">
+                    <rect key="frame" x="16" y="501.99999999999994" width="142" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lan-Sn-ZMZ" userLabel="weatherConditionLabel">
-                    <rect key="frame" x="45" y="626" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lan-Sn-ZMZ" userLabel="weatherConditionLabel">
+                    <rect key="frame" x="16" y="599" width="42" height="20.333333333333371"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbK-JX-mdN" userLabel="locationPositionLabel">
-                    <rect key="frame" x="175" y="692" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbK-JX-mdN" userLabel="locationPositionLabel">
+                    <rect key="frame" x="175.66666666666666" y="741.66666666666663" width="42" height="20.333333333333371"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zav-At-y4G" userLabel="BrickDisplaingWeather">
-                    <rect key="frame" x="76" y="105" width="240" height="293"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zav-At-y4G" userLabel="visualWeatherDisplayBrick">
+                    <rect key="frame" x="76.666666666666686" y="0.0" width="240" height="496"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1iV-KO-NfW">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="496"/>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="1iV-KO-NfW" firstAttribute="top" secondItem="zav-At-y4G" secondAttribute="top" id="3an-Ac-Snh"/>
+                        <constraint firstAttribute="width" secondItem="zav-At-y4G" secondAttribute="height" multiplier="15:31" id="ATV-jn-rbQ"/>
+                        <constraint firstAttribute="bottom" secondItem="1iV-KO-NfW" secondAttribute="bottom" id="IXy-Pv-O5w"/>
+                        <constraint firstItem="1iV-KO-NfW" firstAttribute="leading" secondItem="zav-At-y4G" secondAttribute="leading" id="NMM-W6-SaN"/>
+                        <constraint firstAttribute="trailing" secondItem="1iV-KO-NfW" secondAttribute="trailing" id="fBF-h7-K4R"/>
+                    </constraints>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vyj-vJ-UX4" userLabel="infoView">
-                    <rect key="frame" x="109" y="764" width="171" height="85"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vyj-vJ-UX4" userLabel="infoView">
+                    <rect key="frame" x="109" y="789" width="175" height="85"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="175" id="L2S-su-OPx"/>
+                        <constraint firstAttribute="height" constant="85" id="ORd-is-Ez4"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="zav-At-y4G" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3EN-Gb-rLx"/>
+                <constraint firstAttribute="bottom" secondItem="eav-VR-tor" secondAttribute="bottom" id="3sy-pl-NX6"/>
+                <constraint firstAttribute="trailing" secondItem="8Ec-35-ggZ" secondAttribute="trailing" constant="235" id="GWk-z3-892"/>
+                <constraint firstItem="Vyj-vJ-UX4" firstAttribute="top" secondItem="zav-At-y4G" secondAttribute="bottom" constant="293" id="LON-Rm-wg0"/>
+                <constraint firstItem="zav-At-y4G" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LPY-DV-MY1"/>
+                <constraint firstItem="8Ec-35-ggZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="UNW-cK-sa9"/>
+                <constraint firstAttribute="bottom" secondItem="Vyj-vJ-UX4" secondAttribute="bottom" constant="-22" id="UZc-Fr-bIH"/>
+                <constraint firstItem="Lan-Sn-ZMZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="VTf-3P-LPf"/>
+                <constraint firstItem="Lan-Sn-ZMZ" firstAttribute="top" secondItem="zav-At-y4G" secondAttribute="bottom" constant="103" id="dDX-Zp-gDw"/>
+                <constraint firstItem="eav-VR-tor" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eVL-yD-RBu"/>
+                <constraint firstItem="eav-VR-tor" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eXT-sR-AlN"/>
+                <constraint firstItem="8Ec-35-ggZ" firstAttribute="top" secondItem="zav-At-y4G" secondAttribute="bottom" constant="6" id="elR-2Q-19e"/>
+                <constraint firstItem="Vyj-vJ-UX4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fOz-35-TjB"/>
+                <constraint firstItem="CbK-JX-mdN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iGf-m8-jfg"/>
+                <constraint firstAttribute="trailing" secondItem="eav-VR-tor" secondAttribute="trailing" id="rCu-GC-ODQ"/>
+                <constraint firstItem="Vyj-vJ-UX4" firstAttribute="top" secondItem="CbK-JX-mdN" secondAttribute="bottom" constant="27" id="zdb-yY-2Gl"/>
+            </constraints>
             <point key="canvasLocation" x="84.732824427480907" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <image name="image_background" width="375" height="811"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

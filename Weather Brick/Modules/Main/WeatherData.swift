@@ -1,5 +1,5 @@
 //
-//  DataModels.swift
+//  WeatherData.swift
 //  Weather Brick
 //
 //  Created by Ivan Solohub on 14.07.2023.

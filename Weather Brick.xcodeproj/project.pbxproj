@@ -22,7 +22,7 @@
 		22DC5AEE2A6171B400A91420 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AED2A6171B400A91420 /* Ubuntu-Light.ttf */; };
 		22DC5AF02A6171CA00A91420 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AEF2A6171CA00A91420 /* Ubuntu-Medium.ttf */; };
 		22DC5AF22A6171D400A91420 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AF12A6171D400A91420 /* Ubuntu-Regular.ttf */; };
-		22DC5AF42A61733E00A91420 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5AF32A61733E00A91420 /* DataModels.swift */; };
+		22DC5AF42A61733E00A91420 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5AF32A61733E00A91420 /* WeatherData.swift */; };
 		22DC5AF62A61736E00A91420 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22DC5AF52A61736E00A91420 /* Localizable.strings */; };
 		E26DE0B43571BAB8446FEADB /* Pods_Weather_Brick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6E4C8A0DA148F2E5A01A52 /* Pods_Weather_Brick.framework */; };
 /* End PBXBuildFile section */
@@ -47,7 +47,7 @@
 		22DC5AED2A6171B400A91420 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		22DC5AEF2A6171CA00A91420 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		22DC5AF12A6171D400A91420 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
-		22DC5AF32A61733E00A91420 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		22DC5AF32A61733E00A91420 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		22DC5AF52A61736E00A91420 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C9BD6A5DCDFC1AEEA8354544 /* Pods-Weather Brick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather Brick.debug.xcconfig"; path = "Target Support Files/Pods-Weather Brick/Pods-Weather Brick.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,7 +126,7 @@
 			children = (
 				22DC5ACF2A6163F100A91420 /* MainViewController.swift */,
 				22DC5AE12A61688600A91420 /* MainViewController.xib */,
-				22DC5AF32A61733E00A91420 /* DataModels.swift */,
+				22DC5AF32A61733E00A91420 /* WeatherData.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 				22AAA8552A62A0FE005071EB /* R.generated.swift in Sources */,
 				22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */,
 				22DC5AEA2A6170ED00A91420 /* UIColorExtension.swift in Sources */,
-				22DC5AF42A61733E00A91420 /* DataModels.swift in Sources */,
+				22DC5AF42A61733E00A91420 /* WeatherData.swift in Sources */,
 				22DC5AE82A61708C00A91420 /* UIViewExtension.swift in Sources */,
 				22DC5ACE2A6163F100A91420 /* SceneDelegate.swift in Sources */,
 			);

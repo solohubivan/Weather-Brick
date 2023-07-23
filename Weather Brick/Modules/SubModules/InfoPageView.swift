@@ -28,7 +28,7 @@ class InfoPageView: UIViewController {
         setupDescribtionView()
         setupTitleLabel()
         setupBackToMainVCView()
-        setupTapGestureRecognizer()
+        setupTapGestureForBackToMainView()
         setupConditionInfo()
     }
     
@@ -53,17 +53,17 @@ class InfoPageView: UIViewController {
         
         view.addSubview(brickConditionsDescribtionView)
         brickConditionsDescribtionView.addConstraints(to_view: view, [
-            .top(anchor: view.topAnchor, constant: Constants.topIdentBrickConditionsDescribtionView),
+            .top(anchor: view.topAnchor, constant: Constants.topIndentDescribtionView),
             .centerX(anchor: view.centerXAnchor),
             .height(constant: Constants.heighView),
-            .width(constant: Constants.widthConditionsDescribtionView)])
+            .width(constant: Constants.describtionViewWidth)])
         brickConditionsDescribtionView.addSubview(contentView)
 
         brickConditionsDescribtionView.layer.cornerRadius = Constants.cornerRadius
         
-        brickConditionsDescribtionView.layer.shadowOffset = CGSize(width: .zero, height: Constants.brickConditionsDescribtionViewShadowOffsetHeigh)
-        brickConditionsDescribtionView.layer.shadowOpacity = Constants.brickConditionsDescribtionViewShadowOpacity
-        brickConditionsDescribtionView.layer.shadowRadius = Constants.brickConditionsDescribtionViewShadowRadius
+        brickConditionsDescribtionView.layer.shadowOffset = CGSize(width: .zero, height: Constants.describtionViewShadowOffsetHeigh)
+        brickConditionsDescribtionView.layer.shadowOpacity = Constants.describtionViewShadowOpacity
+        brickConditionsDescribtionView.layer.shadowRadius = Constants.describtionViewShadowRadius
     }
     
     private func setupTitleLabel() {
@@ -171,12 +171,12 @@ class InfoPageView: UIViewController {
         label.addConstraints(to_view: backToMainVCView)
     }
     
-    private func setupTapGestureRecognizer() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(userTapped))
+    private func setupTapGestureForBackToMainView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openMainVC))
         backToMainVCView.addGestureRecognizer(tapGesture)
     }
     
-    @objc func userTapped(_ gesture: UITapGestureRecognizer) {
+    @objc func openMainVC(_ gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
             let mainVC = MainViewController()
             mainVC.modalPresentationStyle = .fullScreen
@@ -195,15 +195,15 @@ extension InfoPageView {
         static let contentViewShadowOffsetWidth: CGFloat = 4
         static let contentViewShadowOpacity: Float = 1
         static let contentViewShadowRadius: CGFloat = 1
-        static let brickConditionsDescribtionViewShadowOffsetHeigh: CGFloat = 5
-        static let brickConditionsDescribtionViewShadowOpacity: Float = 0.3
-        static let brickConditionsDescribtionViewShadowRadius: CGFloat = 2
+        static let describtionViewShadowOffsetHeigh: CGFloat = 5
+        static let describtionViewShadowOpacity: Float = 0.3
+        static let describtionViewShadowRadius: CGFloat = 2
         
         static let widthContentView: CGFloat = 265
-        static let widthConditionsDescribtionView: CGFloat = 269
+        static let describtionViewWidth: CGFloat = 269
         static let heighView: CGFloat = 372
         
-        static let topIdentBrickConditionsDescribtionView: CGFloat = 220
+        static let topIndentDescribtionView: CGFloat = 220
         static let topIdent: CGFloat = 24
         static let heighTitleLabel: CGFloat = 22
         static let heighInfoLabel: CGFloat = 30
