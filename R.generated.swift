@@ -69,7 +69,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 17 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 20 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -118,6 +118,11 @@ struct _R {
       /// Key: drizzle
       var drizzle: RswiftResources.StringResource { .init(key: "drizzle", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: Enable location services in settings
+      ///
+      /// Key: enable_location_services_in_settings
+      var enable_location_services_in_settings: RswiftResources.StringResource { .init(key: "enable_location_services_in_settings", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: Fog
       ///
       /// Key: fog
@@ -143,10 +148,20 @@ struct _R {
       /// Key: mist
       var mist: RswiftResources.StringResource { .init(key: "mist", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: Please allow this app to access your location
+      ///
+      /// Key: please_allow_this_app_to_access_your_location
+      var please_allow_this_app_to_access_your_location: RswiftResources.StringResource { .init(key: "please_allow_this_app_to_access_your_location", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: Rain
       ///
       /// Key: rain
       var rain: RswiftResources.StringResource { .init(key: "rain", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Settings
+      ///
+      /// Key: settings
+      var settings: RswiftResources.StringResource { .init(key: "settings", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
       /// Value: Snow
       ///

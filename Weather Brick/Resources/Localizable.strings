@@ -9,6 +9,7 @@
 //MARK: - titles
 "info" = "INFO";
 "hide" = "Hide";
+"settings" = "Settings";
 
 //MARK: - InfoPageView text
 "brick_is_wet_raining" = "Brick is wet - raining";
@@ -28,3 +29,7 @@
 "fog" = "Fog";
 "haze" = "Haze";
 "mist" = "Mist";
+
+//MARK: - Location allerts
+"please_allow_this_app_to_access_your_location" = "Please allow this app to access your location";
+"enable_location_services_in_settings" = "Enable location services in settings";

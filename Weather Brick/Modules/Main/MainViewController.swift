@@ -88,7 +88,7 @@ class MainViewController: UIViewController {
         customView.addSubview(imageView)
         visualWeatherDisplayBrickView = customView
             
-        let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitate
+        let angleInDegrees: CGFloat = Constants.angleWindImitate
         let angleInRadians = angleInDegrees * .pi / Constants.openCorner
         
         visualWeatherDisplayBrickView.layer.anchorPoint = CGPoint(x: Constants.anchorPointX, y: .zero)
@@ -123,7 +123,7 @@ class MainViewController: UIViewController {
         contentView.addSubview(label)
         label.addConstraints(to_view: contentView, [
             .top(anchor: contentView.topAnchor, constant: Constants.topIndentLabelInInfoView),
-            .bottom(anchor: contentView.bottomAnchor, constant: Constants.bottomIndentLabelInInfoView),
+            .bottom(anchor: contentView.bottomAnchor, constant: Constants.bottomIndentInfoViewLabel),
             .centerX(anchor: contentView.centerXAnchor)])
         
         infoView.addSubview(contentView)
@@ -290,7 +290,7 @@ class MainViewController: UIViewController {
     }
     
     private func animateBricksBackRotation() {
-        let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitateBack
+        let angleInDegrees: CGFloat = Constants.angleWindImitateBack
         let angleInRadians = angleInDegrees * .pi / Constants.openCorner
 
         UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
@@ -301,7 +301,7 @@ class MainViewController: UIViewController {
     }
     
     private func animateBrickRotation() {
-        let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitate
+        let angleInDegrees: CGFloat = Constants.angleWindImitate
         let angleInRadians = angleInDegrees * .pi / Constants.openCorner
 
         UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
@@ -309,6 +309,20 @@ class MainViewController: UIViewController {
         }, completion: { _ in
             self.animateBricksBackRotation()
         })
+    }
+    
+    private func showLocationAlert() {
+        let alertController = UIAlertController(title: R.string.localizable.please_allow_this_app_to_access_your_location(), message: R.string.localizable.enable_location_services_in_settings(), preferredStyle: .alert)
+                
+        let settingsAction = UIAlertAction(title: R.string.localizable.settings(), style: .default) { (_) in
+            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                if UIApplication.shared.canOpenURL(settingsURL) {
+                       UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                }
+            }
+        
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -319,6 +333,15 @@ extension MainViewController: CLLocationManagerDelegate {
             updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            switch status {
+            case .denied, .restricted:
+                showLocationAlert()
+            default:
+                break
+            }
+        }
 }
 
 //MARK: - Constants
@@ -330,13 +353,13 @@ extension MainViewController {
         static let cornerRadius: CGFloat = 15
         
         static let topIndentLabelInInfoView: CGFloat = 16
-        static let bottomIndentLabelInInfoView: CGFloat = 47
+        static let bottomIndentInfoViewLabel: CGFloat = 47
         
         static let translationYFive: CGFloat = 5
         static let translationYEight: CGFloat = 8
         
-        static let angleInDegreesForWindImitate: CGFloat = 15.0
-        static let angleInDegreesForWindImitateBack: CGFloat = -15.0
+        static let angleWindImitate: CGFloat = 15.0
+        static let angleWindImitateBack: CGFloat = -15.0
         static let openCorner: CGFloat = 180
         static let anchorPointX: CGFloat = 0.5
         static let positionYForWindView: CGFloat = -8
