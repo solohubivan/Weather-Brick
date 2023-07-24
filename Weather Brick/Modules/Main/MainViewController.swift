@@ -78,46 +78,39 @@ class MainViewController: UIViewController {
     }
     
     private func setupWindVisualWeatherDisplayBrick() {
-        let customView = UIView(frame: CGRect(x: .zero, y: .zero, width: Constants.widthVisualWeatherDisplayBrickView, height: Constants.heighVisualWeatherDisplayBrickView))
-        
+        let customView = UIView(frame: CGRect(x: .zero, y: .zero, width: visualWeatherDisplayBrickView.bounds.width, height: visualWeatherDisplayBrickView.bounds.height))
+           
         let imageView = UIImageView(image: imageBrick)
         imageView.frame = customView.bounds
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        
+            
         customView.addSubview(imageView)
         visualWeatherDisplayBrickView = customView
-        
+            
         let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitate
         let angleInRadians = angleInDegrees * .pi / Constants.openCorner
-        visualWeatherDisplayBrickView.layer.anchorPoint = CGPoint(x: Constants.anchorPointX, y: Constants.anchorPointY)
         
+        visualWeatherDisplayBrickView.layer.anchorPoint = CGPoint(x: Constants.anchorPointX, y: .zero)
+            
         visualWeatherDisplayBrickView.frame.origin.y = Constants.positionYForWindView
         visualWeatherDisplayBrickView.center.x = view.center.x
-        
+            
         UIView.animate(withDuration: Constants.animateDurationOneSec, animations: {
                 self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
-            }, completion: { _ in
-                self.animateBrickRotation()
-            })
-        
-        view.addSubview(visualWeatherDisplayBrickView)
-    }
-    
+                }, completion: { _ in
+                    self.animateBrickRotation()
+                })
+            view.addSubview(visualWeatherDisplayBrickView)
+        }
+     
     private func setupInfoView() {
+
+        let contentView = UIView()
+        contentView.frame = infoView.bounds
+
+        contentView.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate))
         
-        let contentView = UIView(frame: CGRect(x: .zero, y: .zero, width: infoView.bounds.width, height: infoView.bounds.height))
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = contentView.bounds
-        gradientLayer.colors = [
-            UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor
-        ]
-        gradientLayer.locations = [Constants.gradientLocationZero, Constants.gradientLocationOne]
-        gradientLayer.startPoint = CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYBeginCoordinate)
-        gradientLayer.endPoint = CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate)
-        
-        contentView.layer.insertSublayer(gradientLayer, at: Constants.contentViewLayer)
         contentView.layer.cornerRadius = Constants.cornerRadius
         contentView.layer.masksToBounds = true
         
@@ -132,13 +125,10 @@ class MainViewController: UIViewController {
             .top(anchor: contentView.topAnchor, constant: Constants.topIndentLabelInInfoView),
             .bottom(anchor: contentView.bottomAnchor, constant: Constants.bottomIndentLabelInInfoView),
             .centerX(anchor: contentView.centerXAnchor)])
-
+        
         infoView.addSubview(contentView)
 
-        infoView.layer.shadowColor = UIColor.black.cgColor
-        infoView.layer.shadowOpacity = Constants.infoViewShadowOpacity
-        infoView.layer.shadowOffset = CGSize(width: Constants.infoViewShadowOffsetWidth, height: Constants.infoViewShadowOffsetHeigh)
-        infoView.layer.shadowRadius = Constants.infoViewShadowRadius
+        infoView.applyShadow(opacity: Constants.infoViewShadowOpacity, offset: CGSize(width: Constants.infoViewShadowOffsetWidth, height: Constants.infoViewShadowOffsetHeigh), radius: Constants.infoViewShadowRadius)
         infoView.layer.cornerRadius = Constants.cornerRadius
     }
     
@@ -167,8 +157,8 @@ class MainViewController: UIViewController {
         if gesture.state == .began {
             initialYPosition = visualWeatherDisplayBrickView.frame.origin.y
         } else if gesture.state == .changed {
-            if translation.y > .zero && translation.y >= Constants.ten {
-                let newY = initialYPosition + min(translation.y, Constants.fifty)
+            if translation.y > .zero && translation.y >= Constants.translationYFive {
+                let newY = initialYPosition + min(translation.y, Constants.translationYEight)
                 visualWeatherDisplayBrickView.frame.origin.y = newY
             }
         } else if gesture.state == .ended {
@@ -255,7 +245,7 @@ class MainViewController: UIViewController {
         }
         imageBrick = imageName
         
-        if windSpeed > Constants.ten {
+        if windSpeed > Constants.highWind {
             setupWindVisualWeatherDisplayBrick()
         } else {
             setupVisualWeatherDisplayBrick()
@@ -337,40 +327,37 @@ extension MainViewController {
         static let blurFilterName: String = "CIGaussianBlur"
 
         static let iconSize: CGFloat = 16
+        static let cornerRadius: CGFloat = 15
         
         static let topIndentLabelInInfoView: CGFloat = 16
         static let bottomIndentLabelInInfoView: CGFloat = 47
         
-        static let ten: CGFloat = 10
-        static let fifty: CGFloat = 50
-        static let widthVisualWeatherDisplayBrickView: CGFloat = 224
-        static let heighVisualWeatherDisplayBrickView: CGFloat = 455
+        static let translationYFive: CGFloat = 5
+        static let translationYEight: CGFloat = 8
         
         static let angleInDegreesForWindImitate: CGFloat = 15.0
         static let angleInDegreesForWindImitateBack: CGFloat = -15.0
         static let openCorner: CGFloat = 180
         static let anchorPointX: CGFloat = 0.5
-        static let anchorPointY: CGFloat = 0
         static let positionYForWindView: CGFloat = -8
+        
         static let gradientXCoordinate: CGFloat = 0.3
-        static let gradientYBeginCoordinate: CGFloat = 0
         static let gradientYEndCoordinate: CGFloat = 0.8
+        static let gradientLocationZero: NSNumber = 0
+        static let gradientLocationOne: NSNumber = 1
+        
+        static let blurEffectValue: CGFloat = 5.0
+        
         static let infoViewShadowOpacity: Float = 0.5
         static let infoViewShadowOffsetWidth: CGFloat = 2
         static let infoViewShadowOffsetHeigh: CGFloat = 4
         static let infoViewShadowRadius: CGFloat = 4
-        
-        static let gradientLocationZero: NSNumber = 0
-        static let gradientLocationOne: NSNumber = 1
-        static let contentViewLayer: UInt32 = 0
 
         static let animateDurationOneSec: TimeInterval = 1
         static let animateDurationTwoSec: TimeInterval = 2
         static let animateDuration: TimeInterval = 0.3
         
         static let highTemperature: Int = 30
-        static let blurEffectValue: CGFloat = 5.0
-        
-        static let cornerRadius: CGFloat = 15
+        static let highWind: CGFloat = 10
     }
 }

@@ -92,5 +92,31 @@ extension UIView {
             trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         }
     }
+    
+    func applyShadow(color: UIColor = UIColor.black, opacity: Float = 0.5, offset: CGSize = CGSize(width: 2, height: 2), radius: CGFloat = 4, cornerRadius: CGFloat = 0) {
+        
+        self.layer.cornerRadius = cornerRadius
+                self.layer.shadowColor = color.cgColor
+                self.layer.shadowOpacity = opacity
+                self.layer.shadowOffset = offset
+                self.layer.shadowRadius = radius
+                self.layer.shouldRasterize = true
+                self.layer.masksToBounds = false
+                self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
+    }
+    
+    func applyGradient(colors: [UIColor] = [UIColor.white, UIColor.black],
+                           locations: [NSNumber] = [0, 1],
+                           startPoint: CGPoint = CGPoint(x: 0, y: 0),
+                           endPoint: CGPoint = CGPoint(x: 1, y: 0)) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = colors.map { $0.cgColor }
+        gradientLayer.locations = locations
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
 

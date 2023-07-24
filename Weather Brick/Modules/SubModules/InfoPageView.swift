@@ -9,13 +9,13 @@ import UIKit
 
 class InfoPageView: UIViewController {
     
-    @IBOutlet weak var brickConditionsDescribView: UIView!
-    @IBOutlet weak var infoLabelsFrameView: UIView!
-    @IBOutlet weak var backToMainVCView: UIView!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var mainTitleLabel: UILabel!
+    @IBOutlet weak private var brickConditionsDescribView: UIView!
+    @IBOutlet weak private var infoLabelsFrameView: UIView!
+    @IBOutlet weak private var backToMainVCView: UIView!
+    @IBOutlet weak private var contentView: UIView!
+    @IBOutlet weak private var mainTitleLabel: UILabel!
     
-    let infoLabelsTexts = [
+    private let infoLabelsTexts = [
         R.string.localizable.brick_is_wet_raining(),
         R.string.localizable.brick_is_dry_sunny(),
         R.string.localizable.brick_is_hard_to_see_fog(),
@@ -42,24 +42,17 @@ class InfoPageView: UIViewController {
 
     private func setupBrickConditionDescribView() {
         setupContentView()
+
+        brickConditionsDescribView.applyShadow(opacity: Constants.describtionViewShadowOpacity, offset: CGSize(width: .zero, height: Constants.describtionViewShadowOffsetHeigh), radius: Constants.describtionViewShadowRadius, cornerRadius: Constants.cornerRadius)
         
         brickConditionsDescribView.layer.cornerRadius = Constants.cornerRadius
-        
-        brickConditionsDescribView.layer.shadowOffset = CGSize(width: .zero, height: Constants.describtionViewShadowOffsetHeigh)
-        brickConditionsDescribView.layer.shadowOpacity = Constants.describtionViewShadowOpacity
-        brickConditionsDescribView.layer.shadowRadius = Constants.describtionViewShadowRadius
     }
     
     private func setupContentView() {
         contentView.backgroundColor = UIColor.describtionViewOrangeBackgroundColor
         contentView.layer.cornerRadius = Constants.cornerRadius
         
-        let orangeShadowPath = UIBezierPath(roundedRect: contentView.bounds.insetBy(dx: Constants.dx, dy: .zero), cornerRadius: contentView.layer.cornerRadius)
-        contentView.layer.shadowColor = UIColor.describtionViewOrangeShadowColor
-        contentView.layer.shadowOffset = CGSize(width: Constants.contentViewShadowOffsetWidth, height: .zero)
-        contentView.layer.shadowOpacity = Constants.contentViewShadowOpacity
-        contentView.layer.shadowRadius = Constants.contentViewShadowRadius
-        contentView.layer.shadowPath = orangeShadowPath.cgPath
+        contentView.applyShadow(color: UIColor.describtionViewOrangeShadowColor, opacity: Constants.contentViewShadowOpacity, offset: CGSize(width: Constants.contentViewShadowOffsetWidth, height: .zero), radius: Constants.contentViewShadowRadius, cornerRadius: Constants.cornerRadius)
     }
   
     private func setupTitleLabel() {
@@ -72,7 +65,7 @@ class InfoPageView: UIViewController {
         infoLabelsFrameView.backgroundColor = .clear
         
         for (index, text) in infoLabelsTexts.enumerated() {
-            let labelFrame = CGRect(x: 0, y: CGFloat(index) * Constants.heighInfoLabel, width: infoLabelsFrameView.bounds.width, height: Constants.heighInfoLabel)
+            let labelFrame = CGRect(x: .zero, y: CGFloat(index) * Constants.heighInfoLabel, width: infoLabelsFrameView.bounds.width, height: Constants.heighInfoLabel)
             let label = UILabel(frame: labelFrame)
             label.text = text
             label.textAlignment = .left
@@ -117,18 +110,14 @@ class InfoPageView: UIViewController {
 extension InfoPageView {
     private enum Constants {
         static let cornerRadius: CGFloat = 15
+        static let heighInfoLabel: CGFloat = 30
+        static let borderWidth: CGFloat = 1
 
-        static let dx: CGFloat = -5
-        
-        static let contentViewShadowOffsetWidth: CGFloat = 4
+        static let contentViewShadowOffsetWidth: CGFloat = 8
         static let contentViewShadowOpacity: Float = 1
         static let contentViewShadowRadius: CGFloat = 1
         static let describtionViewShadowOffsetHeigh: CGFloat = 5
         static let describtionViewShadowOpacity: Float = 0.3
         static let describtionViewShadowRadius: CGFloat = 2
-
-        static let heighInfoLabel: CGFloat = 30
-        
-        static let borderWidth: CGFloat = 1
     }
 }
