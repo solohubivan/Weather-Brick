@@ -69,7 +69,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 9 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 17 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -108,6 +108,26 @@ struct _R {
       /// Key: brick_with_snow_snow
       var brick_with_snow_snow: RswiftResources.StringResource { .init(key: "brick_with_snow_snow", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
 
+      /// Value: Clear
+      ///
+      /// Key: clear
+      var clear: RswiftResources.StringResource { .init(key: "clear", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Drizzle
+      ///
+      /// Key: drizzle
+      var drizzle: RswiftResources.StringResource { .init(key: "drizzle", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Fog
+      ///
+      /// Key: fog
+      var fog: RswiftResources.StringResource { .init(key: "fog", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Haze
+      ///
+      /// Key: haze
+      var haze: RswiftResources.StringResource { .init(key: "haze", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
       /// Value: Hide
       ///
       /// Key: hide
@@ -117,6 +137,26 @@ struct _R {
       ///
       /// Key: info
       var info: RswiftResources.StringResource { .init(key: "info", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Mist
+      ///
+      /// Key: mist
+      var mist: RswiftResources.StringResource { .init(key: "mist", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Rain
+      ///
+      /// Key: rain
+      var rain: RswiftResources.StringResource { .init(key: "rain", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Snow
+      ///
+      /// Key: snow
+      var snow: RswiftResources.StringResource { .init(key: "snow", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
+
+      /// Value: Sunny
+      ///
+      /// Key: sunny
+      var sunny: RswiftResources.StringResource { .init(key: "sunny", tableName: "Localizable", source: source, developmentValue: nil, comment: nil) }
     }
   }
 

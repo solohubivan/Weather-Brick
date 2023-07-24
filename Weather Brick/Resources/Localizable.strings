@@ -6,8 +6,11 @@
   
 */
 
+//MARK: - titles
 "info" = "INFO";
 "hide" = "Hide";
+
+//MARK: - InfoPageView text
 "brick_is_wet_raining" = "Brick is wet - raining";
 "brick_is_dry_sunny" = "Brick is dry - sunny";
 "brick_is_hard_to_see_fog" = "Brick is hard to see - fog";
@@ -15,3 +18,13 @@
 "brick_with_snow_snow" = "Brick with snow - snow";
 "brick_is_swinging_windy" = "Brick is swinging - windy";
 "brick_is_gone_no_internet" = "Brick is gone - No Internet";
+
+//MARK: - Wheather conditions
+"clear" = "Clear";
+"sunny" = "Sunny";
+"rain" = "Rain";
+"drizzle" = "Drizzle";
+"snow" = "Snow";
+"fog" = "Fog";
+"haze" = "Haze";
+"mist" = "Mist";

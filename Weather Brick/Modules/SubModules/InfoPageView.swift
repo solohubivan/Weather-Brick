@@ -10,10 +10,20 @@ import UIKit
 class InfoPageView: UIViewController {
     
     @IBOutlet weak var brickConditionsDescribView: UIView!
-    
-    @IBOutlet weak var mainTitleLabel: UILabel!
+    @IBOutlet weak var infoLabelsFrameView: UIView!
     @IBOutlet weak var backToMainVCView: UIView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var mainTitleLabel: UILabel!
+    
+    let infoLabelsTexts = [
+        R.string.localizable.brick_is_wet_raining(),
+        R.string.localizable.brick_is_dry_sunny(),
+        R.string.localizable.brick_is_hard_to_see_fog(),
+        R.string.localizable.brick_with_cracks_very_hot(),
+        R.string.localizable.brick_with_snow_snow(),
+        R.string.localizable.brick_is_swinging_windy(),
+        R.string.localizable.brick_is_gone_no_internet()
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +37,7 @@ class InfoPageView: UIViewController {
         setupTitleLabel()
         setupBackToMainVCView()
         setupTapGestureForBackToMainView()
-   //     setupConditionInfo()
+        setupConditionInfo()
     }
 
     private func setupBrickConditionDescribView() {
@@ -57,78 +67,22 @@ class InfoPageView: UIViewController {
         mainTitleLabel.font = R.font.ubuntuBold(size: 18)
         mainTitleLabel.textColor = UIColor.normalBlackTextColor
     }
-  /*
+  
     private func setupConditionInfo() {
+        infoLabelsFrameView.backgroundColor = .clear
         
-        let labelInfo1 = UILabel()
-        view.addSubview(labelInfo1)
-        labelInfo1.addConstraints(to_view: contentView, [
-            .top(anchor: mainTitleLabel.bottomAnchor, constant: Constants.topIdent),
-            .leading(anchor: contentView.leadingAnchor, constant: Constants.leadingIndent),
-            .height(constant: Constants.heighInfoLabel)])
-        setupInfoLabels(label: labelInfo1)
-        labelInfo1.text = R.string.localizable.brick_is_wet_raining()
-        
-        let labelInfo2 = UILabel()
-        view.addSubview(labelInfo2)
-        labelInfo2.addConstraints(to_view: contentView, [
-            .top(anchor: labelInfo1.bottomAnchor),
-            .leading(anchor: contentView.leadingAnchor, constant: Constants.leadingIndent),
-            .height(constant: Constants.heighInfoLabel)])
-        setupInfoLabels(label: labelInfo2)
-        labelInfo2.text = R.string.localizable.brick_is_dry_sunny()
-        
-        let labelInfo3 = UILabel()
-        view.addSubview(labelInfo3)
-        labelInfo3.addConstraints(to_view: contentView, [
-            .top(anchor: labelInfo2.bottomAnchor),
-            .leading(anchor: contentView.leadingAnchor, constant: Constants.leadingIndent),
-            .height(constant: Constants.heighInfoLabel)])
-        setupInfoLabels(label: labelInfo3)
-        labelInfo3.text = R.string.localizable.brick_is_hard_to_see_fog()
-        
-        let labelInfo4 = UILabel()
-        view.addSubview(labelInfo4)
-        labelInfo4.addConstraints(to_view: contentView, [
-            .top(anchor: labelInfo3.bottomAnchor),
-            .leading(anchor: contentView.leadingAnchor, constant: Constants.leadingIndent),
-            .height(constant: Constants.heighInfoLabel)])
-        setupInfoLabels(label: labelInfo4)
-        labelInfo4.text = R.string.localizable.brick_with_cracks_very_hot()
-        
-        let labelInfo5 = UILabel()
-        view.addSubview(labelInfo5)
-        labelInfo5.addConstraints(to_view: contentView, [
-            .top(anchor: labelInfo4.bottomAnchor),
-            .leading(anchor: contentView.leadingAnchor, constant: Constants.leadingIndent),
-            .height(constant: Constants.heighInfoLabel)])
-        setupInfoLabels(label: labelInfo5)
-        labelInfo5.text = R.string.localizable.brick_with_snow_snow()
-        
-        let labelInfo6 = UILabel()
-        view.addSubview(labelInfo6)
-        labelInfo6.addConstraints(to_view: contentView, [
-            .top(anchor: labelInfo5.bottomAnchor),
-            .leading(anchor: contentView.leadingAnchor, constant: Constants.leadingIndent),
-            .height(constant: Constants.heighInfoLabel)])
-        setupInfoLabels(label: labelInfo6)
-        labelInfo6.text = R.string.localizable.brick_is_swinging_windy()
-        
-        let labelInfo7 = UILabel()
-        view.addSubview(labelInfo7)
-        labelInfo7.addConstraints(to_view: contentView, [
-            .top(anchor: labelInfo6.bottomAnchor),
-            .leading(anchor: contentView.leadingAnchor, constant: Constants.leadingIndent),
-            .height(constant: Constants.heighInfoLabel)])
-        setupInfoLabels(label: labelInfo7)
-        labelInfo7.text = R.string.localizable.brick_is_gone_no_internet()
+        for (index, text) in infoLabelsTexts.enumerated() {
+            let labelFrame = CGRect(x: 0, y: CGFloat(index) * Constants.heighInfoLabel, width: infoLabelsFrameView.bounds.width, height: Constants.heighInfoLabel)
+            let label = UILabel(frame: labelFrame)
+            label.text = text
+            label.textAlignment = .left
+            label.font = R.font.ubuntuRegular(size: 15)
+            label.textColor = UIColor.normalBlackTextColor
+            
+            infoLabelsFrameView.addSubview(label)
+        }
     }
-    */
-    private func setupInfoLabels(label: UILabel) {
-        label.font = R.font.ubuntuRegular(size: 15)
-        label.textColor = UIColor.normalBlackTextColor
-    }
-    
+         
     private func setupBackToMainVCView() {
         backToMainVCView.layer.borderWidth = Constants.borderWidth
         backToMainVCView.layer.borderColor = UIColor.backToMainVCViewGreyColor.cgColor
@@ -174,7 +128,6 @@ extension InfoPageView {
         static let describtionViewShadowRadius: CGFloat = 2
 
         static let heighInfoLabel: CGFloat = 30
-        static let leadingIndent: CGFloat = 30
         
         static let borderWidth: CGFloat = 1
     }

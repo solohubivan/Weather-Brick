@@ -98,7 +98,7 @@ class MainViewController: UIViewController {
         UIView.animate(withDuration: Constants.animateDurationOneSec, animations: {
                 self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
             }, completion: { _ in
-                self.animateRotation()
+                self.animateBrickRotation()
             })
         
         view.addSubview(visualWeatherDisplayBrickView)
@@ -203,7 +203,7 @@ class MainViewController: UIViewController {
         let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&units=metric&appid=515fe6b9d0a1c97ce56f86231fdf5a97")!
         let task = session.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
-                print("\(Constants.dataTaskError): \(error!.localizedDescription)")
+                print(error!.localizedDescription)
                 return
             }
             
@@ -245,10 +245,10 @@ class MainViewController: UIViewController {
             imageName = R.image.image_stone_cracks()!
         } else {
             switch weather {
-            case Constants.clearWeatherCase, Constants.sunnyWeatherCase: imageName = R.image.image_stone_normal()!
-            case Constants.rainWeatherCase, Constants.drizzleWeatherCase: imageName = R.image.image_stone_wet()!
-            case Constants.snowWeatherCase: imageName = R.image.image_stone_snow()!
-            case Constants.fogWeatherCase, Constants.hazeWeatherCase, Constants.mistWeatherCase: imageName = applyBlurEffect(to: R.image.image_stone_normal()!)!
+            case R.string.localizable.clear(), R.string.localizable.sunny(): imageName = R.image.image_stone_normal()!
+            case R.string.localizable.rain(), R.string.localizable.drizzle(): imageName = R.image.image_stone_wet()!
+            case R.string.localizable.snow(): imageName = R.image.image_stone_snow()!
+            case R.string.localizable.fog(), R.string.localizable.haze(), R.string.localizable.mist(): imageName = applyBlurEffect(to: R.image.image_stone_normal()!)!
             default:
                 imageName = R.image.image_stone_normal()!
             }
@@ -299,25 +299,25 @@ class MainViewController: UIViewController {
         locationPositionLabel.attributedText = attributedString
     }
     
-    private func animateBackRotation() {
+    private func animateBricksBackRotation() {
         let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitateBack
         let angleInRadians = angleInDegrees * .pi / Constants.openCorner
 
         UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
             self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
         }, completion: { _ in
-            self.animateRotation()
+            self.animateBrickRotation()
         })
     }
     
-    private func animateRotation() {
+    private func animateBrickRotation() {
         let angleInDegrees: CGFloat = Constants.angleInDegreesForWindImitate
         let angleInRadians = angleInDegrees * .pi / Constants.openCorner
 
         UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
             self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
         }, completion: { _ in
-            self.animateBackRotation()
+            self.animateBricksBackRotation()
         })
     }
 }
@@ -335,17 +335,7 @@ extension MainViewController: CLLocationManagerDelegate {
 extension MainViewController {
     private enum Constants {
         static let blurFilterName: String = "CIGaussianBlur"
-        static let dataTaskError: String = "DataTask error"
-        
-        static let clearWeatherCase: String = "Clear"
-        static let sunnyWeatherCase: String = "Sunny"
-        static let rainWeatherCase: String = "Rain"
-        static let drizzleWeatherCase: String = "Drizzle"
-        static let snowWeatherCase: String = "Snow"
-        static let fogWeatherCase: String = "Fog"
-        static let hazeWeatherCase: String = "Haze"
-        static let mistWeatherCase: String = "Mist"
-        
+
         static let iconSize: CGFloat = 16
         
         static let topIndentLabelInInfoView: CGFloat = 16

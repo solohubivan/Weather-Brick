@@ -13,6 +13,7 @@
                 <outlet property="backToMainVCView" destination="WdG-qS-EjM" id="Rlb-Sr-2oD"/>
                 <outlet property="brickConditionsDescribView" destination="hhZ-8E-YLH" id="2HJ-za-oL3"/>
                 <outlet property="contentView" destination="VfS-6o-3EJ" id="KGv-26-Fyu"/>
+                <outlet property="infoLabelsFrameView" destination="jtp-iQ-ejM" id="78a-tX-W0l"/>
                 <outlet property="mainTitleLabel" destination="ibf-vw-wkM" id="8OD-59-TeB"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iKa-9k-guy"/>
             </connections>
@@ -40,6 +41,14 @@
                                 <constraint firstAttribute="width" constant="115" id="Al7-9O-gYu"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtp-iQ-ejM" userLabel="infoLabelsFrameView">
+                            <rect key="frame" x="30" y="70" width="217" height="215"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="217" id="bKr-ai-78d"/>
+                                <constraint firstAttribute="height" constant="215" id="bww-uZ-fhZ"/>
+                            </constraints>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibf-vw-wkM" userLabel="titleLabel">
                             <rect key="frame" x="113.66666666666666" y="24" width="42" height="22"/>
                             <constraints>
@@ -54,7 +63,9 @@
                     <constraints>
                         <constraint firstItem="VfS-6o-3EJ" firstAttribute="top" secondItem="hhZ-8E-YLH" secondAttribute="top" id="9qI-yj-Im2"/>
                         <constraint firstAttribute="width" constant="269" id="EVK-T5-B88"/>
+                        <constraint firstItem="jtp-iQ-ejM" firstAttribute="leading" secondItem="hhZ-8E-YLH" secondAttribute="leading" constant="30" id="IP0-aj-qy4"/>
                         <constraint firstAttribute="bottom" secondItem="WdG-qS-EjM" secondAttribute="bottom" constant="24" id="JsC-We-cuN"/>
+                        <constraint firstItem="jtp-iQ-ejM" firstAttribute="top" secondItem="ibf-vw-wkM" secondAttribute="bottom" constant="24" id="Lyf-HM-vpD"/>
                         <constraint firstAttribute="height" constant="372" id="QRU-dv-JjF"/>
                         <constraint firstItem="VfS-6o-3EJ" firstAttribute="leading" secondItem="hhZ-8E-YLH" secondAttribute="leading" id="U7p-71-kvW"/>
                         <constraint firstItem="ibf-vw-wkM" firstAttribute="top" secondItem="hhZ-8E-YLH" secondAttribute="top" constant="24" id="Wjj-eA-fQo"/>
