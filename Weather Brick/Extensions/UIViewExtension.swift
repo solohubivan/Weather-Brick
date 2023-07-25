@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreImage
 
 enum ConstraintType {
     case top(anchor: NSLayoutYAxisAnchor, constant: CGFloat = 0)

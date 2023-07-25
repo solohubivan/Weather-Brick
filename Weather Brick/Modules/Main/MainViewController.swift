@@ -18,13 +18,15 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var visualWeatherDisplayBrickView: UIView!
     @IBOutlet weak private var infoView: UIView!
     
-    @IBOutlet weak var bricksImageView: UIImageView!
+    @IBOutlet weak private var bricksImageView: UIImageView!
     private var imageBrick = UIImage()
 
     private var weatherData = WeatherData()
     private var locationManager = CLLocationManager()
+    private var presenter: MainVCPresenterProtocol = MainViewControllerPresenter()
 
-    private var initialYPosition: CGFloat = 0.0
+    private var initialYPosition: CGFloat = .zero
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,6 +171,7 @@ class MainViewController: UIViewController {
             present(mainVC, animated: false)
         }
     }
+    
     private func animateViewReset() {
         UIView.animate(withDuration: Constants.animateDuration) {
             self.visualWeatherDisplayBrickView.frame.origin.y = self.initialYPosition
@@ -221,7 +224,7 @@ class MainViewController: UIViewController {
         }
         
         updateBrickStateImage()
-        createFormatForLocationPositionLabel()
+        presenter.createFormatForLocationPositionLabel(label: locationPositionLabel, with: weatherData)
     }
     
     private func updateBrickStateImage() {
@@ -238,7 +241,7 @@ class MainViewController: UIViewController {
             case R.string.localizable.clear(), R.string.localizable.sunny(): imageName = R.image.image_stone_normal()!
             case R.string.localizable.rain(), R.string.localizable.drizzle(): imageName = R.image.image_stone_wet()!
             case R.string.localizable.snow(): imageName = R.image.image_stone_snow()!
-            case R.string.localizable.fog(), R.string.localizable.haze(), R.string.localizable.mist(): imageName = applyBlurEffect(to: R.image.image_stone_normal()!)!
+            case R.string.localizable.fog(), R.string.localizable.haze(), R.string.localizable.mist(): imageName = applyBlurEffect(to: R.image.image_stone_normal()!, blurEffect: Constants.blurEffectValue)!
             default:
                 imageName = R.image.image_stone_normal()!
             }
@@ -252,11 +255,11 @@ class MainViewController: UIViewController {
         }
     }
     
-    private func applyBlurEffect(to image: UIImage) -> UIImage? {
+    private func applyBlurEffect(to image: UIImage, blurEffect: CGFloat) -> UIImage? {
         if let ciImage = CIImage(image: image) {
             let blurFilter = CIFilter(name: Constants.blurFilterName)
             blurFilter?.setValue(ciImage, forKey: kCIInputImageKey)
-            blurFilter?.setValue(Constants.blurEffectValue, forKey: kCIInputRadiusKey)
+            blurFilter?.setValue(blurEffect, forKey: kCIInputRadiusKey)
             
             if let outputCIImage = blurFilter?.outputImage {
                 let context = CIContext(options: nil)
@@ -268,27 +271,7 @@ class MainViewController: UIViewController {
         }
         return nil
     }
-    
-    private func createFormatForLocationPositionLabel() {
-        let text = " \(weatherData.name), \(weatherData.sys.country) "
-        
-        let leftIconAttachment = NSTextAttachment()
-        leftIconAttachment.image = R.image.icon_location()
-        let rightIconAttachment = NSTextAttachment()
-        rightIconAttachment.image = R.image.icon_search()
-        
-        let iconSize = CGSize(width: Constants.iconSize, height: Constants.iconSize)
-        leftIconAttachment.bounds = CGRect(origin: .zero, size: iconSize)
-        rightIconAttachment.bounds = CGRect(origin: .zero, size: iconSize)
-        
-        let attributedString = NSMutableAttributedString()
-        attributedString.append(NSAttributedString(attachment: leftIconAttachment))
-        attributedString.append(NSAttributedString(string: text))
-        attributedString.append(NSAttributedString(attachment: rightIconAttachment))
-        
-        locationPositionLabel.attributedText = attributedString
-    }
-    
+
     private func animateBricksBackRotation() {
         let angleInDegrees: CGFloat = Constants.angleWindImitateBack
         let angleInRadians = angleInDegrees * .pi / Constants.openCorner
