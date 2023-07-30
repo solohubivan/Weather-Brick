@@ -26,6 +26,8 @@ class MainViewController: UIViewController {
     private var presenter: MainVCPresenterProtocol = MainViewControllerPresenter()
 
     private var initialYPosition: CGFloat = .zero
+    private var curentLatitude: Double?
+    private var curentLongitude: Double?
     
     
     override func viewDidLoad() {
@@ -137,14 +139,13 @@ class MainViewController: UIViewController {
                 visualWeatherDisplayBrickView.frame.origin.y = newY
             }
         } else if gesture.state == .ended {
-            animateViewReset()
             
-            let mainVC = MainViewController()
-            mainVC.modalPresentationStyle = .fullScreen
-            present(mainVC, animated: false)
+            updateWeatherInfo(latitude: curentLatitude!, longitude: curentLongitude!)
+            
+            animateViewReset()
         }
     }
-    
+
     private func animateViewReset() {
         UIView.animate(withDuration: Constants.animateDuration) {
             self.visualWeatherDisplayBrickView.frame.origin.y = self.initialYPosition
@@ -197,7 +198,21 @@ class MainViewController: UIViewController {
         }
         
         updateBrickStateImage()
-        presenter.createFormatForLocationPositionLabel(label: locationPositionLabel, with: weatherData)
+
+        locationPositionLabel.attributedText = createStringForLocationPosition(iconSize: CGSize(width: Constants.iconSize, height: Constants.iconSize))
+    }
+    
+    private func createStringForLocationPosition(iconSize: CGSize) -> NSAttributedString {
+        let locationIcon = NSTextAttachment(image: R.image.icon_location()!)
+        locationIcon.bounds = CGRect(origin: .zero, size: iconSize)
+        let searchIcon = NSTextAttachment(image: R.image.icon_search()!)
+        searchIcon.bounds = CGRect(origin: .zero, size: iconSize)
+        
+        let resultString = NSMutableAttributedString()
+        resultString.append(NSAttributedString(attachment: locationIcon))
+        resultString.append(NSAttributedString(string: presenter.createTextForLocationPosition(with: weatherData)))
+        resultString.append(NSAttributedString(attachment: searchIcon))
+        return resultString
     }
     
     private func updateBrickStateImage() {
@@ -287,6 +302,8 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
             updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
+            curentLatitude = lastLocation.coordinate.latitude
+            curentLongitude = lastLocation.coordinate.longitude
         }
     }
     

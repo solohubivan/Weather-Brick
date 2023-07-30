@@ -7,23 +7,24 @@
 
 import Foundation
 
-struct Weather: Codable {
-    var main: String
-}
-
-struct Main: Codable {
-    var temp: Double = 0.0
-}
-
-struct Sys: Codable {
-    var country: String = ""
-}
-
-struct Wind: Codable {
-    var speed: Double = 0.0
-}
-
 struct WeatherData: Codable {
+    
+    struct Weather: Codable {
+        var main: String
+    }
+    
+    struct Main: Codable {
+        var temp: Double = 0.0
+    }
+    
+    struct Sys: Codable {
+        var country: String = ""
+    }
+    
+    struct Wind: Codable {
+        var speed: Double = 0.0
+    }
+    
     var weather: [Weather] = []
     var main: Main = Main()
     var sys: Sys = Sys()
