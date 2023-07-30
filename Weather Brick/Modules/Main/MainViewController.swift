@@ -16,9 +16,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var weatherDescribLabel: UILabel!
     @IBOutlet weak private var locationPositionLabel: UILabel!
     @IBOutlet weak private var visualWeatherDisplayBrickView: UIView!
-    @IBOutlet weak private var infoView: UIView!
-    
+    @IBOutlet weak private var buttonToInfoVC: UIButton!
     @IBOutlet weak private var bricksImageView: UIImageView!
+    
     private var imageBrick = UIImage()
 
     private var weatherData = WeatherData()
@@ -39,11 +39,10 @@ class MainViewController: UIViewController {
     
     private func setupUI() {
         visualWeatherDisplayBrickView.isHidden = true
-        setupInfoView()
+        setupButtonToInfoVC()
         setupTemperatureLabel()
         setupWeatherConditionLabel()
         setupLocationPositionLabel()
-        setupTapGestureRecognizerForInfoView()
         setupPullToRefresh()
     }
     
@@ -105,55 +104,29 @@ class MainViewController: UIViewController {
                 })
             view.addSubview(visualWeatherDisplayBrickView)
         }
-     
-    private func setupInfoView() {
-
-        let contentView = UIView()
-        contentView.frame = infoView.bounds
-
-        contentView.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate))
+    
+    private func setupButtonToInfoVC() {
+        buttonToInfoVC.setTitle(R.string.localizable.info(), for: .normal)
+        buttonToInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
+        buttonToInfoVC.setTitleColor(UIColor.normalBlackTextColor, for: .normal)
         
-        contentView.layer.cornerRadius = Constants.cornerRadius
-        contentView.layer.masksToBounds = true
+        buttonToInfoVC.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate), cornerRadius: Constants.cornerRadius, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         
-        let label = UILabel()
-        label.text = R.string.localizable.info()
-        label.textColor = UIColor.normalBlackTextColor
-        label.textAlignment = .center
-        label.font = R.font.ubuntuBold(size: 18)
-        
-        contentView.addSubview(label)
-        label.addConstraints(to_view: contentView, [
-            .top(anchor: contentView.topAnchor, constant: Constants.topIndentLabelInInfoView),
-            .bottom(anchor: contentView.bottomAnchor, constant: Constants.bottomIndentInfoViewLabel),
-            .centerX(anchor: contentView.centerXAnchor)])
-        
-        infoView.addSubview(contentView)
-
-        infoView.applyShadow(opacity: Constants.infoViewShadowOpacity, offset: CGSize(width: Constants.infoViewShadowOffsetWidth, height: Constants.infoViewShadowOffsetHeigh), radius: Constants.infoViewShadowRadius)
-        infoView.layer.cornerRadius = Constants.cornerRadius
+        buttonToInfoVC.applyShadow(opacity: Constants.infoButtonShadowOpacity, offset: CGSize(width: Constants.infoButtonShadowOffsetWidth, height: Constants.infoButtonShadowOffsetHeigh), radius: Constants.infoButtonShadowRadius)
     }
     
-    private func setupTapGestureRecognizerForInfoView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openInfoPageVC))
-        infoView.addGestureRecognizer(tapGesture)
+    @IBAction func openInfoVC(_ sender: Any) {
+        let infoPageVC = InfoPageView()
+        infoPageVC.modalPresentationStyle = .fullScreen
+        present(infoPageVC, animated: false)
     }
-    
-    @objc func openInfoPageVC(_ gesture: UITapGestureRecognizer) {
-        if gesture.state == .ended {
-            
-            let infoPageVC = InfoPageView()
-            infoPageVC.modalPresentationStyle = .fullScreen
-            present(infoPageVC, animated: false)
-        }
-    }
-    
+
     private func setupPullToRefresh() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(settingsForPullToRefresh(_:)))
         visualWeatherDisplayBrickView.addGestureRecognizer(panGesture)
     }
     
-    @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+    @objc private func settingsForPullToRefresh(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
         
         if gesture.state == .began {
@@ -335,9 +308,6 @@ extension MainViewController {
         static let iconSize: CGFloat = 16
         static let cornerRadius: CGFloat = 15
         
-        static let topIndentLabelInInfoView: CGFloat = 16
-        static let bottomIndentInfoViewLabel: CGFloat = 47
-        
         static let translationYFive: CGFloat = 5
         static let translationYEight: CGFloat = 8
         
@@ -354,10 +324,10 @@ extension MainViewController {
         
         static let blurEffectValue: CGFloat = 5.0
         
-        static let infoViewShadowOpacity: Float = 0.5
-        static let infoViewShadowOffsetWidth: CGFloat = 2
-        static let infoViewShadowOffsetHeigh: CGFloat = 4
-        static let infoViewShadowRadius: CGFloat = 4
+        static let infoButtonShadowOpacity: Float = 0.5
+        static let infoButtonShadowOffsetWidth: CGFloat = 3
+        static let infoButtonShadowOffsetHeigh: CGFloat = 4
+        static let infoButtonShadowRadius: CGFloat = 4
 
         static let animateDurationOneSec: TimeInterval = 1
         static let animateDurationTwoSec: TimeInterval = 2

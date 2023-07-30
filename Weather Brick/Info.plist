@@ -27,6 +27,6 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>An app needs current location, to showing weather condition.</string>
 </dict>
 </plist>
