@@ -14,6 +14,8 @@ class InfoPageView: UIViewController {
     @IBOutlet weak private var mainTitleLabel: UILabel!
     @IBOutlet weak private var returnToMainVCButton: UIButton!
     @IBOutlet weak private var infoLabelsStackView: UIStackView!
+    
+    private var mainVC = MainViewController()
  
     private var infoLabelsTexts = [
         R.string.localizable.brick_is_wet_raining(),
@@ -87,7 +89,6 @@ class InfoPageView: UIViewController {
     }
     
     @IBAction func openMainVC(_ sender: Any) {
-        let mainVC = MainViewController()
         mainVC.modalPresentationStyle = .fullScreen
         present(mainVC, animated: false)
     }

@@ -9,6 +9,9 @@ import UIKit
 import CoreLocation
 import CoreImage
 
+protocol MainViewProtocol: AnyObject {
+    func updateUI(with weatherData: WeatherData)
+}
 
 class MainViewController: UIViewController {
     
@@ -23,21 +26,19 @@ class MainViewController: UIViewController {
 
     private var weatherData = WeatherData()
     private var locationManager = CLLocationManager()
-    private var presenter: MainVCPresenterProtocol = MainViewControllerPresenter()
-//    private var presenter: MainVCPresenterProtocol!
+
+    private var presenter: MainVCPresenterProtocol!
     
     private var initialYPosition: CGFloat = .zero
     private var currentLatitude: Double?
     private var currentLongitude: Double?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         startLocationManager()
+        presenter = MainViewControllerPresenter(view: self)
         setupUI()
- //       presenter = MainViewControllerPresenter()
-        
     }
     
     // MARK: - UI setup
@@ -143,8 +144,7 @@ class MainViewController: UIViewController {
             }
         } else if gesture.state == .ended {
             
-            updateWeatherInfo(latitude: currentLatitude!, longitude: currentLongitude!)
-            
+            presenter.fetchData(latitude: currentLatitude!, longitude: currentLongitude!)
             animateViewReset()
         }
     }
@@ -168,43 +168,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    private func updateWeatherInfo(latitude: Double, longitude: Double) {
-        let session = URLSession.shared
-        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&units=metric&appid=515fe6b9d0a1c97ce56f86231fdf5a97")!
-        let task = session.dataTask(with: url) { (data, response, error) in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            
-            do {
-                self.weatherData = try JSONDecoder().decode(WeatherData.self, from: data!)
-                print(self.weatherData)
-                DispatchQueue.main.async {
-                    self.updateUI()
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        task.resume()
-    }
-    
-    private func updateUI() {
-
-        let temperature = Int(weatherData.main.temp)
-        temperatureLabel.text = "\(temperature)°"
- 
-        if let weather = weatherData.weather.first?.main {
-            let lowercaseWeather = weather.lowercased()
-            weatherDescribLabel.text = "\(lowercaseWeather)"
-        }
-        
-        updateBrickStateImage()
-
-        locationPositionLabel.attributedText = createStringForLocationPosition(iconSize: CGSize(width: Constants.iconSize, height: Constants.iconSize))
-    }
-    
     private func createStringForLocationPosition(iconSize: CGSize) -> NSAttributedString {
         let locationIcon = NSTextAttachment(image: R.image.icon_location()!)
         locationIcon.bounds = CGRect(origin: .zero, size: iconSize)
@@ -213,7 +176,7 @@ class MainViewController: UIViewController {
         
         let resultString = NSMutableAttributedString()
         resultString.append(NSAttributedString(attachment: locationIcon))
-        resultString.append(NSAttributedString(string: presenter.createTextForLocationPosition(with: weatherData)))
+        resultString.append(NSAttributedString(string: presenter.createTextForLocationPosition()))
         resultString.append(NSAttributedString(attachment: searchIcon))
         return resultString
     }
@@ -304,7 +267,7 @@ class MainViewController: UIViewController {
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
-            updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
+            presenter.fetchData(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
             currentLatitude = lastLocation.coordinate.latitude
             currentLongitude = lastLocation.coordinate.longitude
         }
@@ -318,6 +281,23 @@ extension MainViewController: CLLocationManagerDelegate {
                 break
             }
         }
+}
+
+extension MainViewController: MainViewProtocol {
+    func updateUI(with weatherData: WeatherData) {
+
+        let temperature = Int(weatherData.main.temp)
+        temperatureLabel.text = "\(temperature)°"
+ 
+        if let weather = weatherData.weather.first?.main {
+            let lowercaseWeather = weather.lowercased()
+            weatherDescribLabel.text = "\(lowercaseWeather)"
+        }
+        
+        updateBrickStateImage()
+
+        locationPositionLabel.attributedText = createStringForLocationPosition(iconSize: CGSize(width: Constants.iconSize, height: Constants.iconSize))
+    }
 }
 
 //MARK: - Constants
