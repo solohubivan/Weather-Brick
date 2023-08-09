@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var weatherDescribLabel: UILabel!
     @IBOutlet weak private var locationPositionLabel: UILabel!
     @IBOutlet weak private var visualWeatherDisplayBrickView: UIView!
-    @IBOutlet weak private var buttonToInfoVC: UIButton!
+    @IBOutlet weak private var showInfoVC: UIButton!
     @IBOutlet weak private var bricksImageView: UIImageView!
     
     private var imageBrick = UIImage()
@@ -24,24 +24,27 @@ class MainViewController: UIViewController {
     private var weatherData = WeatherData()
     private var locationManager = CLLocationManager()
     private var presenter: MainVCPresenterProtocol = MainViewControllerPresenter()
-
+//    private var presenter: MainVCPresenterProtocol!
+    
     private var initialYPosition: CGFloat = .zero
-    private var curentLatitude: Double?
-    private var curentLongitude: Double?
+    private var currentLatitude: Double?
+    private var currentLongitude: Double?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
         startLocationManager()
+        setupUI()
+ //       presenter = MainViewControllerPresenter()
+        
     }
     
     // MARK: - UI setup
     
     private func setupUI() {
         visualWeatherDisplayBrickView.isHidden = true
-        setupButtonToInfoVC()
+        setupButtonShowInfoVC()
         setupTemperatureLabel()
         setupWeatherConditionLabel()
         setupLocationPositionLabel()
@@ -107,14 +110,14 @@ class MainViewController: UIViewController {
             view.addSubview(visualWeatherDisplayBrickView)
         }
     
-    private func setupButtonToInfoVC() {
-        buttonToInfoVC.setTitle(R.string.localizable.info(), for: .normal)
-        buttonToInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
-        buttonToInfoVC.setTitleColor(UIColor.normalBlackTextColor, for: .normal)
+    private func setupButtonShowInfoVC() {
+        showInfoVC.setTitle(R.string.localizable.info(), for: .normal)
+        showInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
+        showInfoVC.setTitleColor(UIColor.normalBlackTextColor, for: .normal)
         
-        buttonToInfoVC.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate), cornerRadius: Constants.cornerRadius, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        showInfoVC.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate), cornerRadius: Constants.cornerRadius, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         
-        buttonToInfoVC.applyShadow(opacity: Constants.infoButtonShadowOpacity, offset: CGSize(width: Constants.infoButtonShadowOffsetWidth, height: Constants.infoButtonShadowOffsetHeigh), radius: Constants.infoButtonShadowRadius)
+        showInfoVC.applyShadow(opacity: Constants.infoButtonShadowOpacity, offset: CGSize(width: Constants.infoButtonShadowOffsetWidth, height: Constants.infoButtonShadowOffsetHeigh), radius: Constants.infoButtonShadowRadius)
     }
     
     @IBAction func openInfoVC(_ sender: Any) {
@@ -140,7 +143,7 @@ class MainViewController: UIViewController {
             }
         } else if gesture.state == .ended {
             
-            updateWeatherInfo(latitude: curentLatitude!, longitude: curentLongitude!)
+            updateWeatherInfo(latitude: currentLatitude!, longitude: currentLongitude!)
             
             animateViewReset()
         }
@@ -302,8 +305,8 @@ extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
             updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
-            curentLatitude = lastLocation.coordinate.latitude
-            curentLongitude = lastLocation.coordinate.longitude
+            currentLatitude = lastLocation.coordinate.latitude
+            currentLongitude = lastLocation.coordinate.longitude
         }
     }
     

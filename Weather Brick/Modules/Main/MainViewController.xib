@@ -11,8 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Weather_Brick" customModuleProvider="target">
             <connections>
                 <outlet property="bricksImageView" destination="1iV-KO-NfW" id="pWv-fh-1sw"/>
-                <outlet property="buttonToInfoVC" destination="XXT-OW-0Ub" id="FOq-DG-xzr"/>
                 <outlet property="locationPositionLabel" destination="CbK-JX-mdN" id="vyw-oQ-9dK"/>
+                <outlet property="showInfoVC" destination="XXT-OW-0Ub" id="FOq-DG-xzr"/>
                 <outlet property="temperatureLabel" destination="8Ec-35-ggZ" id="LWl-7z-bcr"/>
                 <outlet property="view" destination="iN0-l3-epB" id="9N0-zD-c1J"/>
                 <outlet property="visualWeatherDisplayBrickView" destination="zav-At-y4G" id="s1g-gX-Mzb"/>

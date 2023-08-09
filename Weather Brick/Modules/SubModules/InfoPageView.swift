@@ -12,7 +12,7 @@ class InfoPageView: UIViewController {
     @IBOutlet weak private var brickConditionsDescribView: UIView!
     @IBOutlet weak private var contentView: UIView!
     @IBOutlet weak private var mainTitleLabel: UILabel!
-    @IBOutlet weak private var returnMainVCButton: UIButton!
+    @IBOutlet weak private var returnToMainVCButton: UIButton!
     @IBOutlet weak private var infoLabelsStackView: UIStackView!
  
     private var infoLabelsTexts = [
@@ -75,15 +75,15 @@ class InfoPageView: UIViewController {
     }
 
     private func setupReturnToMainVCButton() {
-        returnMainVCButton.backgroundColor = .clear
-        returnMainVCButton.layer.borderWidth = Constants.borderWidth
-        returnMainVCButton.layer.borderColor = UIColor.returnToMainVCButtonGreyColor.cgColor
-        returnMainVCButton.layer.cornerRadius = Constants.cornerRadius
+        returnToMainVCButton.backgroundColor = .clear
+        returnToMainVCButton.layer.borderWidth = Constants.borderWidth
+        returnToMainVCButton.layer.borderColor = UIColor.returnToMainVCButtonGreyColor.cgColor
+        returnToMainVCButton.layer.cornerRadius = Constants.cornerRadius
         
         
-        returnMainVCButton.setTitle(R.string.localizable.hide(), for: .normal)
-        returnMainVCButton.setTitleColor(UIColor.returnToMainVCButtonGreyColor, for: .normal)
-        returnMainVCButton.titleLabel?.font = R.font.ubuntuMedium(size: 15)
+        returnToMainVCButton.setTitle(R.string.localizable.hide(), for: .normal)
+        returnToMainVCButton.setTitleColor(UIColor.returnToMainVCButtonGreyColor, for: .normal)
+        returnToMainVCButton.titleLabel?.font = R.font.ubuntuMedium(size: 15)
     }
     
     @IBAction func openMainVC(_ sender: Any) {

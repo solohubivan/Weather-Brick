@@ -14,7 +14,7 @@
                 <outlet property="contentView" destination="KGb-iN-ROX" id="loR-YB-cqh"/>
                 <outlet property="infoLabelsStackView" destination="5Hp-xQ-QE9" id="S03-6C-97v"/>
                 <outlet property="mainTitleLabel" destination="0jp-Bt-qIS" id="WPO-Y7-sim"/>
-                <outlet property="returnMainVCButton" destination="k2j-Ct-T9V" id="JWx-zA-XZd"/>
+                <outlet property="returnToMainVCButton" destination="k2j-Ct-T9V" id="JWx-zA-XZd"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iKa-9k-guy"/>
             </connections>
         </placeholder>
