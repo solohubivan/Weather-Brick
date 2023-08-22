@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
     private var currentLatitude: Double?
     private var currentLongitude: Double?
     
-    let refreshControl: UIRefreshControl = {
+    private let refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshActivated), for: .valueChanged)
         return refreshControl
@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
         tableViewBrickState.backgroundColor = .clear
         tableViewBrickState.separatorColor = .clear
         
-        tableViewBrickState.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
+        tableViewBrickState.register(UINib(nibName: Constants.nibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         
         tableViewBrickState.refreshControl = refreshControl
     }
@@ -278,7 +278,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! TableViewCell
         cell.selectionStyle = .none
         updateBrickStateImage()
         cell.brickStateImageView.image = imageBrick
@@ -307,6 +307,8 @@ extension MainViewController: MainViewProtocol {
 //MARK: - Constants
 extension MainViewController {
     private enum Constants {
+        static let cellIdentifier: String = "CustomCell"
+        static let nibName: String = "TableViewCell"
         static let blurFilterName: String = "CIGaussianBlur"
 
         static let iconSize: CGFloat = 16
