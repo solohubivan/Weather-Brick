@@ -12,6 +12,9 @@ let R = _R(bundle: Bundle(for: BundleFinder.self))
 
 struct _R {
   let bundle: Foundation.Bundle
+
+  let reuseIdentifier = reuseIdentifier()
+
   var string: string { .init(bundle: bundle, preferredLanguages: nil, locale: nil) }
   var image: image { .init(bundle: bundle) }
   var info: info { .init(bundle: bundle) }
@@ -292,7 +295,7 @@ struct _R {
     var ubuntuRegularTtf: RswiftResources.FileResource { .init(name: "Ubuntu-Regular", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
     let bundle: Foundation.Bundle
 
@@ -302,10 +305,20 @@ struct _R {
     /// Nib `MainViewController`.
     var mainViewController: RswiftResources.NibReference<UIKit.UIView> { .init(name: "MainViewController", bundle: bundle) }
 
+    /// Nib `TableViewCell`.
+    var tableViewCell: RswiftResources.NibReferenceReuseIdentifier<TableViewCell, TableViewCell> { .init(name: "TableViewCell", bundle: bundle, identifier: "CustomCell") }
+
     func validate() throws {
       if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'InfoPageView', but couldn't be loaded.") }
       if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'MainViewController', but couldn't be loaded.") }
     }
+  }
+
+  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  struct reuseIdentifier {
+
+    /// Reuse identifier `CustomCell`.
+    let customCell: RswiftResources.ReuseIdentifier<TableViewCell> = .init(identifier: "CustomCell")
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.

@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var locationPositionLabel: UILabel!
     @IBOutlet weak private var visualWeatherDisplayBrickView: UIView!
     @IBOutlet weak private var showInfoVC: UIButton!
-    @IBOutlet weak private var bricksImageView: UIImageView!
+    @IBOutlet weak private var tableViewBrickState: UITableView!
     
     private var imageBrick = UIImage()
 
@@ -29,9 +29,14 @@ class MainViewController: UIViewController {
 
     private var presenter: MainVCPresenterProtocol!
     
-    private var initialYPosition: CGFloat = .zero
     private var currentLatitude: Double?
     private var currentLongitude: Double?
+    
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshActivated), for: .valueChanged)
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +54,23 @@ class MainViewController: UIViewController {
         setupTemperatureLabel()
         setupWeatherConditionLabel()
         setupLocationPositionLabel()
-        setupPullToRefresh()
+        setupTableViewBrickState()
+    }
+    
+    private func setupTableViewBrickState() {
+        tableViewBrickState.dataSource = self
+        tableViewBrickState.delegate = self
+        tableViewBrickState.backgroundColor = .clear
+        tableViewBrickState.separatorColor = .clear
+        
+        tableViewBrickState.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
+        
+        tableViewBrickState.refreshControl = refreshControl
+    }
+    
+    @objc private func refreshActivated() {
+        presenter.fetchData(latitude: currentLatitude!, longitude: currentLongitude!)
+        refreshControl.endRefreshing()
     }
     
     private func setupTemperatureLabel() {
@@ -64,7 +85,6 @@ class MainViewController: UIViewController {
         weatherDescribLabel.text = ""
     }
     
-    
     private func setupLocationPositionLabel() {
         locationPositionLabel.textColor = UIColor.normalBlackTextColor
         locationPositionLabel.font = R.font.ubuntuMedium(size: 17)
@@ -74,14 +94,6 @@ class MainViewController: UIViewController {
     private func setupVisualWeatherDisplayBrick() {
         visualWeatherDisplayBrickView.isHidden = false
         visualWeatherDisplayBrickView.backgroundColor = .clear
-        setupBricksImageView(image: imageBrick)
-    }
-    
-    private func setupBricksImageView(image: UIImage) {
-        bricksImageView.image = image
-        bricksImageView.frame = visualWeatherDisplayBrickView.bounds
-        bricksImageView.contentMode = .scaleToFill
-        bricksImageView.clipsToBounds = true
     }
     
     private func setupWindVisualWeatherDisplayBrick() {
@@ -127,34 +139,6 @@ class MainViewController: UIViewController {
         present(infoPageVC, animated: false)
     }
 
-    private func setupPullToRefresh() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(settingsForPullToRefresh(_:)))
-        visualWeatherDisplayBrickView.addGestureRecognizer(panGesture)
-    }
-    
-    @objc private func settingsForPullToRefresh(_ gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-        
-        if gesture.state == .began {
-            initialYPosition = visualWeatherDisplayBrickView.frame.origin.y
-        } else if gesture.state == .changed {
-            if translation.y > .zero && translation.y >= Constants.translationYFive {
-                let newY = initialYPosition + min(translation.y, Constants.translationYEight)
-                visualWeatherDisplayBrickView.frame.origin.y = newY
-            }
-        } else if gesture.state == .ended {
-            
-            presenter.fetchData(latitude: currentLatitude!, longitude: currentLongitude!)
-            animateViewReset()
-        }
-    }
-
-    private func animateViewReset() {
-        UIView.animate(withDuration: Constants.animateDuration) {
-            self.visualWeatherDisplayBrickView.frame.origin.y = self.initialYPosition
-        }
-    }
-    
     //MARK: - Private methods
     
     private func startLocationManager() {
@@ -263,7 +247,8 @@ class MainViewController: UIViewController {
     }
 }
 
-//MARK: - extension to action after user's location getting
+//MARK: - Extensions
+
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
@@ -281,6 +266,25 @@ extension MainViewController: CLLocationManagerDelegate {
                 break
             }
         }
+}
+
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! TableViewCell
+        cell.selectionStyle = .none
+        updateBrickStateImage()
+        cell.brickStateImageView.image = imageBrick
+
+        return cell
+    }
 }
 
 extension MainViewController: MainViewProtocol {

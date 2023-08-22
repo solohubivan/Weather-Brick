@@ -10,6 +10,8 @@
 		22AAA8552A62A0FE005071EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAA8542A62A0FE005071EB /* R.generated.swift */; };
 		22AAA85A2A632308005071EB /* InfoPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAA8592A632308005071EB /* InfoPageView.swift */; };
 		22B034482A6ECFF700799FF4 /* MainViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B034472A6ECFF700799FF4 /* MainViewControllerPresenter.swift */; };
+		22B1323B2A93F69F00A14A68 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B132392A93F69F00A14A68 /* TableViewCell.swift */; };
+		22B1323C2A93F69F00A14A68 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1323A2A93F69F00A14A68 /* TableViewCell.xib */; };
 		22CF83CB2A68617700317D8C /* InfoPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CF83CA2A68617700317D8C /* InfoPageView.xib */; };
 		22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACB2A6163F100A91420 /* AppDelegate.swift */; };
 		22DC5ACE2A6163F100A91420 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */; };
@@ -34,6 +36,8 @@
 		22AAA8542A62A0FE005071EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		22AAA8592A632308005071EB /* InfoPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPageView.swift; sourceTree = "<group>"; };
 		22B034472A6ECFF700799FF4 /* MainViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerPresenter.swift; sourceTree = "<group>"; };
+		22B132392A93F69F00A14A68 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		22B1323A2A93F69F00A14A68 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		22CF83CA2A68617700317D8C /* InfoPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoPageView.xib; sourceTree = "<group>"; };
 		22DC5AC82A6163F100A91420 /* Weather Brick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Brick.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22DC5ACB2A6163F100A91420 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 			path = SubModules;
 			sourceTree = "<group>";
 		};
+		22B132382A93E7DF00A14A68 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				22B132392A93F69F00A14A68 /* TableViewCell.swift */,
+				22B1323A2A93F69F00A14A68 /* TableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		22DC5ABF2A6163F100A91420 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 		22DC5ADF2A61677B00A91420 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				22B132382A93E7DF00A14A68 /* Cells */,
 				22AAA8582A632293005071EB /* SubModules */,
 				22DC5AE02A61679C00A91420 /* Main */,
 			);
@@ -245,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22DC5AEC2A6171A600A91420 /* Ubuntu-Bold.ttf in Resources */,
+				22B1323C2A93F69F00A14A68 /* TableViewCell.xib in Resources */,
 				22DC5AD82A6163F100A91420 /* LaunchScreen.storyboard in Resources */,
 				22DC5AF02A6171CA00A91420 /* Ubuntu-Medium.ttf in Resources */,
 				22DC5AEE2A6171B400A91420 /* Ubuntu-Light.ttf in Resources */,
@@ -329,6 +344,7 @@
 				22B034482A6ECFF700799FF4 /* MainViewControllerPresenter.swift in Sources */,
 				22AAA8552A62A0FE005071EB /* R.generated.swift in Sources */,
 				22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */,
+				22B1323B2A93F69F00A14A68 /* TableViewCell.swift in Sources */,
 				22DC5AEA2A6170ED00A91420 /* UIColorExtension.swift in Sources */,
 				22DC5AF42A61733E00A91420 /* WeatherData.swift in Sources */,
 				22DC5AE82A61708C00A91420 /* UIViewExtension.swift in Sources */,
