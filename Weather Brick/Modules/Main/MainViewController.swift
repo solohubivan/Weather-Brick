@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
     // MARK: - UI setup
     
     private func setupUI() {
-        visualWeatherDisplayBrickView.isHidden = true
+ //       visualWeatherDisplayBrickView.isHidden = true
         setupButtonShowInfoVC()
         setupTemperatureLabel()
         setupWeatherConditionLabel()
@@ -89,11 +89,6 @@ class MainViewController: UIViewController {
         locationPositionLabel.textColor = UIColor.normalBlackTextColor
         locationPositionLabel.font = R.font.ubuntuMedium(size: 17)
         locationPositionLabel.text = ""
-    }
-    
-    private func setupVisualWeatherDisplayBrick() {
-        visualWeatherDisplayBrickView.isHidden = false
-        visualWeatherDisplayBrickView.backgroundColor = .clear
     }
     
     private func setupWindVisualWeatherDisplayBrick() {
@@ -188,8 +183,6 @@ class MainViewController: UIViewController {
         
         if windSpeed > Constants.highWind {
             setupWindVisualWeatherDisplayBrick()
-        } else {
-            setupVisualWeatherDisplayBrick()
         }
     }
     
