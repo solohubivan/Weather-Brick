@@ -125,7 +125,7 @@ extension UIView {
             gradientLayer.maskedCorners = maskedCorners
         }
         
-        self.layer.insertSublayer(gradientLayer, at: .zero)
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
 

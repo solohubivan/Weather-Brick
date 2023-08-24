@@ -119,13 +119,26 @@ class MainViewController: UIViewController {
         }
     
     private func setupButtonShowInfoVC() {
-        showInfoVC.setTitle(R.string.localizable.info(), for: .normal)
+        
+   //     showInfoVC.setTitle(R.string.localizable.info(), for: .normal)
+   //     showInfoVC.setTitle("Solohub", for: .normal)
+
+   //     showInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
+  //      showInfoVC.setTitleColor(UIColor.normalBlackTextColor, for: .normal)
+   //     showInfoVC.backgroundColor = .orange
+
+    
+        showInfoVC.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate), cornerRadius: Constants.cornerRadius, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+       
+        showInfoVC.setTitle("Solohub", for: .normal)
         showInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
         showInfoVC.setTitleColor(UIColor.normalBlackTextColor, for: .normal)
         
-        showInfoVC.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate), cornerRadius: Constants.cornerRadius, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
-        
+        showInfoVC.backgroundColor = .clear
+    //    showInfoVC.insertSubview(gradientLayer, at: 0)
+     /*
         showInfoVC.applyShadow(opacity: Constants.infoButtonShadowOpacity, offset: CGSize(width: Constants.infoButtonShadowOffsetWidth, height: Constants.infoButtonShadowOffsetHeigh), radius: Constants.infoButtonShadowRadius)
+     */
     }
     
     @IBAction func openInfoVC(_ sender: Any) {
