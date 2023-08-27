@@ -1,5 +1,5 @@
 //
-//  CustomTableViewCell.swift
+//  RegularTableViewCell.swift
 //  Weather Brick
 //
 //  Created by Ivan Solohub on 21.08.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class RegularTableViewCell: UITableViewCell {
     
     @IBOutlet weak var brickStateImageView: UIImageView!
     

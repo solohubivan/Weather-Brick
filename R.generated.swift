@@ -305,8 +305,8 @@ struct _R {
     /// Nib `MainViewController`.
     var mainViewController: RswiftResources.NibReference<UIKit.UIView> { .init(name: "MainViewController", bundle: bundle) }
 
-    /// Nib `TableViewCell`.
-    var tableViewCell: RswiftResources.NibReferenceReuseIdentifier<TableViewCell, TableViewCell> { .init(name: "TableViewCell", bundle: bundle, identifier: "CustomCell") }
+    /// Nib `RegularTableViewCell`.
+    var regularTableViewCell: RswiftResources.NibReferenceReuseIdentifier<RegularTableViewCell, RegularTableViewCell> { .init(name: "RegularTableViewCell", bundle: bundle, identifier: "CustomCell") }
 
     func validate() throws {
       if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'InfoPageView', but couldn't be loaded.") }
@@ -318,7 +318,7 @@ struct _R {
   struct reuseIdentifier {
 
     /// Reuse identifier `CustomCell`.
-    let customCell: RswiftResources.ReuseIdentifier<TableViewCell> = .init(identifier: "CustomCell")
+    let customCell: RswiftResources.ReuseIdentifier<RegularTableViewCell> = .init(identifier: "CustomCell")
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.

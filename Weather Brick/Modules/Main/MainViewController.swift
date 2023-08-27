@@ -23,8 +23,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var tableViewBrickState: UITableView!
     
     private var imageBrick = UIImage()
+ //   var imageBrickFrame: CGRect?
 
-    private var weatherData = WeatherData()
     private var locationManager = CLLocationManager()
 
     private var presenter: MainVCPresenterProtocol!
@@ -49,21 +49,22 @@ class MainViewController: UIViewController {
     // MARK: - UI setup
     
     private func setupUI() {
- //       visualWeatherDisplayBrickView.isHidden = true
+        visualWeatherDisplayBrickView.isHidden = true
+        tableViewBrickState.isHidden = true
         setupButtonShowInfoVC()
         setupTemperatureLabel()
         setupWeatherConditionLabel()
         setupLocationPositionLabel()
-        setupTableViewBrickState()
     }
     
     private func setupTableViewBrickState() {
+        tableViewBrickState.isHidden = false
         tableViewBrickState.dataSource = self
         tableViewBrickState.delegate = self
         tableViewBrickState.backgroundColor = .clear
         tableViewBrickState.separatorColor = .clear
         
-        tableViewBrickState.register(UINib(nibName: Constants.nibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
+        tableViewBrickState.register(UINib(nibName: Constants.nibNameRegularCell, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
         
         tableViewBrickState.refreshControl = refreshControl
     }
@@ -96,7 +97,7 @@ class MainViewController: UIViewController {
            
         let imageView = UIImageView(image: imageBrick)
         imageView.frame = customView.bounds
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
             
         customView.addSubview(imageView)
@@ -107,7 +108,7 @@ class MainViewController: UIViewController {
         
         visualWeatherDisplayBrickView.layer.anchorPoint = CGPoint(x: Constants.anchorPointX, y: .zero)
             
-        visualWeatherDisplayBrickView.frame.origin.y = Constants.positionYForWindView
+        visualWeatherDisplayBrickView.frame.origin.y = .zero
         visualWeatherDisplayBrickView.center.x = view.center.x
             
         UIView.animate(withDuration: Constants.animateDurationOneSec, animations: {
@@ -119,26 +120,17 @@ class MainViewController: UIViewController {
         }
     
     private func setupButtonShowInfoVC() {
-        
-   //     showInfoVC.setTitle(R.string.localizable.info(), for: .normal)
-   //     showInfoVC.setTitle("Solohub", for: .normal)
-
-   //     showInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
-  //      showInfoVC.setTitleColor(UIColor.normalBlackTextColor, for: .normal)
-   //     showInfoVC.backgroundColor = .orange
-
-    
-        showInfoVC.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate), cornerRadius: Constants.cornerRadius, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
-       
-        showInfoVC.setTitle("Solohub", for: .normal)
+        showInfoVC.setTitle(R.string.localizable.info(), for: .normal)
         showInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
         showInfoVC.setTitleColor(UIColor.normalBlackTextColor, for: .normal)
         
-        showInfoVC.backgroundColor = .clear
-    //    showInfoVC.insertSubview(gradientLayer, at: 0)
-     /*
         showInfoVC.applyShadow(opacity: Constants.infoButtonShadowOpacity, offset: CGSize(width: Constants.infoButtonShadowOffsetWidth, height: Constants.infoButtonShadowOffsetHeigh), radius: Constants.infoButtonShadowRadius)
-     */
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        showInfoVC.applyGradient(colors: [UIColor.infoViewFirstGradientRedColor, UIColor.infoViewSecondGradientOrangeColor], locations: [Constants.gradientLocationZero, Constants.gradientLocationOne], startPoint: CGPoint(x: Constants.gradientXCoordinate, y: .zero), endPoint: CGPoint(x: Constants.gradientXCoordinate, y: Constants.gradientYEndCoordinate), cornerRadius: Constants.cornerRadius, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
     }
     
     @IBAction func openInfoVC(_ sender: Any) {
@@ -173,7 +165,7 @@ class MainViewController: UIViewController {
         return resultString
     }
     
-    private func updateBrickStateImage() {
+    private func updateBrickStateImage(with weatherData: WeatherData) {
         let weather = weatherData.weather.first?.main
         let temperature = Int(weatherData.main.temp)
         let windSpeed = Double(weatherData.wind.speed)
@@ -194,8 +186,12 @@ class MainViewController: UIViewController {
         }
         imageBrick = imageName
         
-        if windSpeed > Constants.highWind {
+        
+        
+        if windSpeed > 10 { //Constants.highWind {
             setupWindVisualWeatherDisplayBrick()
+        } else {
+            setupTableViewBrickState()
         }
     }
     
@@ -206,9 +202,9 @@ class MainViewController: UIViewController {
             blurFilter?.setValue(blurEffect, forKey: kCIInputRadiusKey)
             
             if let outputCIImage = blurFilter?.outputImage {
-                let context = CIContext(options: nil)
+                let context = CIContext(options: [CIContextOption.useSoftwareRenderer: false])
                 if let outputCGImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) {
-                    let blurredImage = UIImage(cgImage: outputCGImage)
+                    let blurredImage = UIImage(cgImage: outputCGImage, scale: image.scale, orientation: image.imageOrientation)
                     return blurredImage
                 }
             }
@@ -276,19 +272,18 @@ extension MainViewController: CLLocationManagerDelegate {
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return Constants.tableParameter
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        Constants.tableParameter
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! RegularTableViewCell
         cell.selectionStyle = .none
-        updateBrickStateImage()
         cell.brickStateImageView.image = imageBrick
-
+    //    imageBrickFrame = cell.brickStateImageView.frame
         return cell
     }
 }
@@ -304,7 +299,7 @@ extension MainViewController: MainViewProtocol {
             weatherDescribLabel.text = "\(lowercaseWeather)"
         }
         
-        updateBrickStateImage()
+        updateBrickStateImage(with: weatherData)
 
         locationPositionLabel.attributedText = createStringForLocationPosition(iconSize: CGSize(width: Constants.iconSize, height: Constants.iconSize))
     }
@@ -314,11 +309,13 @@ extension MainViewController: MainViewProtocol {
 extension MainViewController {
     private enum Constants {
         static let cellIdentifier: String = "CustomCell"
-        static let nibName: String = "TableViewCell"
+        static let nibNameRegularCell: String = "RegularTableViewCell"
         static let blurFilterName: String = "CIGaussianBlur"
 
         static let iconSize: CGFloat = 16
         static let cornerRadius: CGFloat = 15
+        
+        static let tableParameter: Int = 1
         
         static let translationYFive: CGFloat = 5
         static let translationYEight: CGFloat = 8
@@ -327,7 +324,6 @@ extension MainViewController {
         static let angleWindImitateBack: CGFloat = -15.0
         static let openCorner: CGFloat = 180
         static let anchorPointX: CGFloat = 0.5
-        static let positionYForWindView: CGFloat = -8
         
         static let gradientXCoordinate: CGFloat = 0.3
         static let gradientYEndCoordinate: CGFloat = 0.8

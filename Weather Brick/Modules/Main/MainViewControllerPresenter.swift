@@ -35,6 +35,10 @@ class MainViewControllerPresenter: MainVCPresenterProtocol {
         updateWeatherInfo(latitude: latitude, longitude: longitude)
     }
     
+  //  func provideWeatherData() -> WeatherData {
+ //       return weatherData
+ //   }
+    
     // Private Methods
     
     private func updateWeatherInfo(latitude: Double, longitude: Double) {
