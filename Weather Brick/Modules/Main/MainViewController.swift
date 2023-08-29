@@ -18,12 +18,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak private var temperatureLabel: UILabel!
     @IBOutlet weak private var weatherDescribLabel: UILabel!
     @IBOutlet weak private var locationPositionLabel: UILabel!
-    @IBOutlet weak private var visualWeatherDisplayBrickView: UIView!
     @IBOutlet weak private var showInfoVC: UIButton!
     @IBOutlet weak private var tableViewBrickState: UITableView!
     
     private var imageBrick = UIImage()
- //   var imageBrickFrame: CGRect?
+    private var windMode: Bool = false
 
     private var locationManager = CLLocationManager()
 
@@ -49,7 +48,6 @@ class MainViewController: UIViewController {
     // MARK: - UI setup
     
     private func setupUI() {
-        visualWeatherDisplayBrickView.isHidden = true
         tableViewBrickState.isHidden = true
         setupButtonShowInfoVC()
         setupTemperatureLabel()
@@ -57,15 +55,13 @@ class MainViewController: UIViewController {
         setupLocationPositionLabel()
     }
     
-    private func setupTableViewBrickState() {
+    private func setupTableViewBrickState(nibName: String, forCellReuseIdentifier identifier: String) {
         tableViewBrickState.isHidden = false
         tableViewBrickState.dataSource = self
         tableViewBrickState.delegate = self
         tableViewBrickState.backgroundColor = .clear
         tableViewBrickState.separatorColor = .clear
-        
-        tableViewBrickState.register(UINib(nibName: Constants.nibNameRegularCell, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
-        
+        tableViewBrickState.register(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: identifier)
         tableViewBrickState.refreshControl = refreshControl
     }
     
@@ -91,34 +87,7 @@ class MainViewController: UIViewController {
         locationPositionLabel.font = R.font.ubuntuMedium(size: 17)
         locationPositionLabel.text = ""
     }
-    
-    private func setupWindVisualWeatherDisplayBrick() {
-        let customView = UIView(frame: CGRect(x: .zero, y: .zero, width: visualWeatherDisplayBrickView.bounds.width, height: visualWeatherDisplayBrickView.bounds.height))
-           
-        let imageView = UIImageView(image: imageBrick)
-        imageView.frame = customView.bounds
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-            
-        customView.addSubview(imageView)
-        visualWeatherDisplayBrickView = customView
-            
-        let angleInDegrees: CGFloat = Constants.angleWindImitate
-        let angleInRadians = angleInDegrees * .pi / Constants.openCorner
-        
-        visualWeatherDisplayBrickView.layer.anchorPoint = CGPoint(x: Constants.anchorPointX, y: .zero)
-            
-        visualWeatherDisplayBrickView.frame.origin.y = .zero
-        visualWeatherDisplayBrickView.center.x = view.center.x
-            
-        UIView.animate(withDuration: Constants.animateDurationOneSec, animations: {
-                self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
-                }, completion: { _ in
-                    self.animateBrickRotation()
-                })
-            view.addSubview(visualWeatherDisplayBrickView)
-        }
-    
+
     private func setupButtonShowInfoVC() {
         showInfoVC.setTitle(R.string.localizable.info(), for: .normal)
         showInfoVC.titleLabel?.font = R.font.ubuntuBold(size: 18)
@@ -185,13 +154,14 @@ class MainViewController: UIViewController {
             }
         }
         imageBrick = imageName
-        
-        
-        
-        if windSpeed > 10 { //Constants.highWind {
-            setupWindVisualWeatherDisplayBrick()
+
+        if windSpeed > Constants.highWind {
+            windMode = true
+            setupTableViewBrickState(nibName: Constants.nibNameWindModeCell, forCellReuseIdentifier: Constants.windModeCellIdentifier)
         } else {
-            setupTableViewBrickState()
+            windMode = false
+            setupTableViewBrickState(nibName: Constants.nibNameRegularCell, forCellReuseIdentifier: Constants.regularCellIdentifier)
+            
         }
     }
     
@@ -212,28 +182,6 @@ class MainViewController: UIViewController {
         return nil
     }
 
-    private func animateBricksBackRotation() {
-        let angleInDegrees: CGFloat = Constants.angleWindImitateBack
-        let angleInRadians = angleInDegrees * .pi / Constants.openCorner
-
-        UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
-            self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
-        }, completion: { _ in
-            self.animateBrickRotation()
-        })
-    }
-    
-    private func animateBrickRotation() {
-        let angleInDegrees: CGFloat = Constants.angleWindImitate
-        let angleInRadians = angleInDegrees * .pi / Constants.openCorner
-
-        UIView.animate(withDuration: Constants.animateDurationTwoSec, animations: {
-            self.visualWeatherDisplayBrickView.transform = CGAffineTransform(rotationAngle: angleInRadians)
-        }, completion: { _ in
-            self.animateBricksBackRotation()
-        })
-    }
-    
     private func showLocationAlert() {
         let alertController = UIAlertController(title: R.string.localizable.please_allow_this_app_to_access_your_location(), message: R.string.localizable.enable_location_services_in_settings(), preferredStyle: .alert)
                 
@@ -267,7 +215,7 @@ extension MainViewController: CLLocationManagerDelegate {
             default:
                 break
             }
-        }
+    }
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
@@ -280,11 +228,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! RegularTableViewCell
-        cell.selectionStyle = .none
-        cell.brickStateImageView.image = imageBrick
-    //    imageBrickFrame = cell.brickStateImageView.frame
-        return cell
+        if windMode == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.windModeCellIdentifier, for: indexPath) as! WindTableViewCell
+            cell.selectionStyle = .none
+            cell.windBrickStateImageView.image = imageBrick
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.regularCellIdentifier, for: indexPath) as! RegularTableViewCell
+            cell.selectionStyle = .none
+            cell.brickStateImageView.image = imageBrick
+            return cell
+        }
     }
 }
 
@@ -308,23 +262,17 @@ extension MainViewController: MainViewProtocol {
 //MARK: - Constants
 extension MainViewController {
     private enum Constants {
-        static let cellIdentifier: String = "CustomCell"
+        static let regularCellIdentifier: String = "RegularCell"
         static let nibNameRegularCell: String = "RegularTableViewCell"
+        static let windModeCellIdentifier: String = "WindCell"
+        static let nibNameWindModeCell: String = "WindTableViewCell"
         static let blurFilterName: String = "CIGaussianBlur"
 
         static let iconSize: CGFloat = 16
         static let cornerRadius: CGFloat = 15
         
         static let tableParameter: Int = 1
-        
-        static let translationYFive: CGFloat = 5
-        static let translationYEight: CGFloat = 8
-        
-        static let angleWindImitate: CGFloat = 15.0
-        static let angleWindImitateBack: CGFloat = -15.0
-        static let openCorner: CGFloat = 180
-        static let anchorPointX: CGFloat = 0.5
-        
+
         static let gradientXCoordinate: CGFloat = 0.3
         static let gradientYEndCoordinate: CGFloat = 0.8
         static let gradientLocationZero: NSNumber = 0
@@ -337,10 +285,6 @@ extension MainViewController {
         static let infoButtonShadowOffsetHeigh: CGFloat = 4
         static let infoButtonShadowRadius: CGFloat = 4
 
-        static let animateDurationOneSec: TimeInterval = 1
-        static let animateDurationTwoSec: TimeInterval = 2
-        static let animateDuration: TimeInterval = 0.3
-        
         static let highTemperature: Int = 30
         static let highWind: CGFloat = 10
     }

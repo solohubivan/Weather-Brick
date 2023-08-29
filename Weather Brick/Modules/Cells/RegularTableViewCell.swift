@@ -11,9 +11,8 @@ class RegularTableViewCell: UITableViewCell {
     
     @IBOutlet weak var brickStateImageView: UIImageView!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
     }
 }

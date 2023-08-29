@@ -16,7 +16,6 @@
                 <outlet property="tableViewBrickState" destination="n1r-LF-d9A" id="blh-bR-GP4"/>
                 <outlet property="temperatureLabel" destination="8Ec-35-ggZ" id="LWl-7z-bcr"/>
                 <outlet property="view" destination="iN0-l3-epB" id="9N0-zD-c1J"/>
-                <outlet property="visualWeatherDisplayBrickView" destination="qJI-VV-ohS" id="d7V-yY-Vaq"/>
                 <outlet property="weatherDescribLabel" destination="Lan-Sn-ZMZ" id="NWR-8R-z9I"/>
             </connections>
         </placeholder>
@@ -28,10 +27,6 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_background" translatesAutoresizingMaskIntoConstraints="NO" id="eav-VR-tor">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJI-VV-ohS" userLabel="visualWeatherDisplayBrickView">
-                    <rect key="frame" x="75" y="59" width="243" height="552.33333333333337"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n1r-LF-d9A">
                     <rect key="frame" x="0.0" y="59" width="393" height="552.33333333333337"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -74,13 +69,10 @@
                 <constraint firstAttribute="bottom" secondItem="yeN-6t-94I" secondAttribute="bottom" id="0Lv-Ja-75J"/>
                 <constraint firstItem="Lan-Sn-ZMZ" firstAttribute="top" secondItem="8Ec-35-ggZ" secondAttribute="bottom" id="3nN-bo-qAe"/>
                 <constraint firstAttribute="bottom" secondItem="eav-VR-tor" secondAttribute="bottom" id="3sy-pl-NX6"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qJI-VV-ohS" secondAttribute="trailing" constant="75" id="ATp-S6-Ntl"/>
                 <constraint firstItem="yeN-6t-94I" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="I7j-df-blB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n1r-LF-d9A" secondAttribute="trailing" id="SJl-Jb-D0h"/>
-                <constraint firstItem="qJI-VV-ohS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="75" id="SZG-tj-3xn"/>
                 <constraint firstItem="8Ec-35-ggZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="UNW-cK-sa9"/>
                 <constraint firstItem="Lan-Sn-ZMZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="VTf-3P-LPf"/>
-                <constraint firstItem="8Ec-35-ggZ" firstAttribute="top" secondItem="qJI-VV-ohS" secondAttribute="bottom" constant="6" id="Vtl-eF-P5l"/>
                 <constraint firstItem="CbK-JX-mdN" firstAttribute="top" secondItem="Lan-Sn-ZMZ" secondAttribute="bottom" constant="83" id="bIX-3W-y01"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lan-Sn-ZMZ" secondAttribute="trailing" constant="16" id="cBR-fF-kHo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8Ec-35-ggZ" secondAttribute="trailing" constant="16" id="dP2-4p-bOX"/>
@@ -89,7 +81,6 @@
                 <constraint firstItem="eav-VR-tor" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eXT-sR-AlN"/>
                 <constraint firstItem="CbK-JX-mdN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iGf-m8-jfg"/>
                 <constraint firstItem="yeN-6t-94I" firstAttribute="top" secondItem="CbK-JX-mdN" secondAttribute="bottom" constant="27" id="iOL-xW-0Xz"/>
-                <constraint firstItem="qJI-VV-ohS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="lPp-i9-bnr"/>
                 <constraint firstItem="CbK-JX-mdN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="qXj-1Z-MSp"/>
                 <constraint firstAttribute="trailing" secondItem="eav-VR-tor" secondAttribute="trailing" id="rCu-GC-ODQ"/>
                 <constraint firstItem="n1r-LF-d9A" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sg8-8K-jje"/>

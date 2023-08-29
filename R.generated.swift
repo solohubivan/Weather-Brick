@@ -295,7 +295,7 @@ struct _R {
     var ubuntuRegularTtf: RswiftResources.FileResource { .init(name: "Ubuntu-Regular", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
     let bundle: Foundation.Bundle
 
@@ -306,7 +306,10 @@ struct _R {
     var mainViewController: RswiftResources.NibReference<UIKit.UIView> { .init(name: "MainViewController", bundle: bundle) }
 
     /// Nib `RegularTableViewCell`.
-    var regularTableViewCell: RswiftResources.NibReferenceReuseIdentifier<RegularTableViewCell, RegularTableViewCell> { .init(name: "RegularTableViewCell", bundle: bundle, identifier: "CustomCell") }
+    var regularTableViewCell: RswiftResources.NibReferenceReuseIdentifier<RegularTableViewCell, RegularTableViewCell> { .init(name: "RegularTableViewCell", bundle: bundle, identifier: "RegularCell") }
+
+    /// Nib `WindTableViewCell`.
+    var windTableViewCell: RswiftResources.NibReferenceReuseIdentifier<WindTableViewCell, WindTableViewCell> { .init(name: "WindTableViewCell", bundle: bundle, identifier: "WindCell") }
 
     func validate() throws {
       if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'InfoPageView', but couldn't be loaded.") }
@@ -314,11 +317,14 @@ struct _R {
     }
   }
 
-  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
 
-    /// Reuse identifier `CustomCell`.
-    let customCell: RswiftResources.ReuseIdentifier<RegularTableViewCell> = .init(identifier: "CustomCell")
+    /// Reuse identifier `RegularCell`.
+    let regularCell: RswiftResources.ReuseIdentifier<RegularTableViewCell> = .init(identifier: "RegularCell")
+
+    /// Reuse identifier `WindCell`.
+    let windCell: RswiftResources.ReuseIdentifier<WindTableViewCell> = .init(identifier: "WindCell")
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.
