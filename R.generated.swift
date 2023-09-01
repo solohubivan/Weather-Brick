@@ -295,36 +295,30 @@ struct _R {
     var ubuntuRegularTtf: RswiftResources.FileResource { .init(name: "Ubuntu-Regular", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  /// This `_R.nib` struct is generated, and contains static references to 4 nibs.
+  /// This `_R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
     let bundle: Foundation.Bundle
 
-    /// Nib `InfoPageView`.
-    var infoPageView: RswiftResources.NibReference<UIKit.UIView> { .init(name: "InfoPageView", bundle: bundle) }
+    /// Nib `CustomTableViewCell`.
+    var customTableViewCell: RswiftResources.NibReferenceReuseIdentifier<CustomTableViewCell, CustomTableViewCell> { .init(name: "CustomTableViewCell", bundle: bundle, identifier: "CustomCell") }
+
+    /// Nib `InfoPageViewController`.
+    var infoPageViewController: RswiftResources.NibReference<UIKit.UIView> { .init(name: "InfoPageViewController", bundle: bundle) }
 
     /// Nib `MainViewController`.
     var mainViewController: RswiftResources.NibReference<UIKit.UIView> { .init(name: "MainViewController", bundle: bundle) }
 
-    /// Nib `RegularTableViewCell`.
-    var regularTableViewCell: RswiftResources.NibReferenceReuseIdentifier<RegularTableViewCell, RegularTableViewCell> { .init(name: "RegularTableViewCell", bundle: bundle, identifier: "RegularCell") }
-
-    /// Nib `WindTableViewCell`.
-    var windTableViewCell: RswiftResources.NibReferenceReuseIdentifier<WindTableViewCell, WindTableViewCell> { .init(name: "WindTableViewCell", bundle: bundle, identifier: "WindCell") }
-
     func validate() throws {
-      if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'InfoPageView', but couldn't be loaded.") }
+      if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'InfoPageViewController', but couldn't be loaded.") }
       if UIKit.UIImage(named: "image_background", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'image_background' is used in nib 'MainViewController', but couldn't be loaded.") }
     }
   }
 
-  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `_R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
   struct reuseIdentifier {
 
-    /// Reuse identifier `RegularCell`.
-    let regularCell: RswiftResources.ReuseIdentifier<RegularTableViewCell> = .init(identifier: "RegularCell")
-
-    /// Reuse identifier `WindCell`.
-    let windCell: RswiftResources.ReuseIdentifier<WindTableViewCell> = .init(identifier: "WindCell")
+    /// Reuse identifier `CustomCell`.
+    let customCell: RswiftResources.ReuseIdentifier<CustomTableViewCell> = .init(identifier: "CustomCell")
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.

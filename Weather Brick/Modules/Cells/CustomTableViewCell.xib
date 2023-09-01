@@ -10,46 +10,45 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WindCell" rowHeight="136" id="KGk-i7-Jjw" customClass="WindTableViewCell" customModule="Weather_Brick" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="136"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" rowHeight="1013" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="Weather_Brick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="900" height="1013"/>
+            <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="136"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <rect key="frame" x="0.0" y="0.0" width="900" height="1013"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="C82-3a-4Y1">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="136"/>
+                        <rect key="frame" x="0.0" y="0.0" width="900" height="1013"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ge7-32-3kM">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="136"/>
+                                <rect key="frame" x="0.0" y="0.0" width="900" height="1013"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ge7-32-3kM" secondAttribute="trailing" id="BPu-Jw-Lkf"/>
-                            <constraint firstItem="ge7-32-3kM" firstAttribute="leading" secondItem="C82-3a-4Y1" secondAttribute="leading" id="gR3-mL-5D2"/>
-                            <constraint firstAttribute="bottom" secondItem="ge7-32-3kM" secondAttribute="bottom" id="k8J-by-NGe"/>
-                            <constraint firstItem="ge7-32-3kM" firstAttribute="top" secondItem="C82-3a-4Y1" secondAttribute="top" id="x7A-Jp-gFH"/>
+                            <constraint firstAttribute="trailing" secondItem="ge7-32-3kM" secondAttribute="trailing" id="0lV-FM-rzE"/>
+                            <constraint firstItem="ge7-32-3kM" firstAttribute="leading" secondItem="C82-3a-4Y1" secondAttribute="leading" id="l1m-Df-f5h"/>
+                            <constraint firstAttribute="bottom" secondItem="ge7-32-3kM" secondAttribute="bottom" id="oby-hJ-NlE"/>
+                            <constraint firstItem="ge7-32-3kM" firstAttribute="top" secondItem="C82-3a-4Y1" secondAttribute="top" id="zBV-xA-wIQ"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="C82-3a-4Y1" secondAttribute="trailing" id="B9M-cu-Qra"/>
-                    <constraint firstAttribute="bottom" secondItem="C82-3a-4Y1" secondAttribute="bottom" id="WSZ-2C-dnl"/>
-                    <constraint firstItem="C82-3a-4Y1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="epi-jn-LbT"/>
-                    <constraint firstItem="C82-3a-4Y1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fUp-3q-qw8"/>
+                    <constraint firstItem="C82-3a-4Y1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2uY-94-aXE"/>
+                    <constraint firstAttribute="bottom" secondItem="C82-3a-4Y1" secondAttribute="bottom" id="W7B-AB-aoZ"/>
+                    <constraint firstItem="C82-3a-4Y1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hiY-sZ-bio"/>
+                    <constraint firstAttribute="trailing" secondItem="C82-3a-4Y1" secondAttribute="trailing" id="wTu-VE-3K4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="contentView" destination="H2p-sc-9uM" id="ACZ-hi-FOb"/>
                 <outlet property="visualWeatherDisplayBrickView" destination="C82-3a-4Y1" id="4ng-K2-Ihx"/>
                 <outlet property="windBrickStateImageView" destination="ge7-32-3kM" id="8C2-IQ-JQ4"/>
             </connections>
-            <point key="canvasLocation" x="-19.847328244274809" y="52.816901408450704"/>
+            <point key="canvasLocation" x="157" y="53"/>
         </tableViewCell>
     </objects>
 </document>

@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		22A1FB3E2A9B6DDD0055F6F3 /* WindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1FB3C2A9B6DDD0055F6F3 /* WindTableViewCell.swift */; };
-		22A1FB3F2A9B6DDD0055F6F3 /* WindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A1FB3D2A9B6DDD0055F6F3 /* WindTableViewCell.xib */; };
+		221F28B12AA1FF7C001E53D7 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221F28B02AA1FF7C001E53D7 /* CALayerExtension.swift */; };
+		22A1FB3E2A9B6DDD0055F6F3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1FB3C2A9B6DDD0055F6F3 /* CustomTableViewCell.swift */; };
+		22A1FB3F2A9B6DDD0055F6F3 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A1FB3D2A9B6DDD0055F6F3 /* CustomTableViewCell.xib */; };
 		22AAA8552A62A0FE005071EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAA8542A62A0FE005071EB /* R.generated.swift */; };
-		22AAA85A2A632308005071EB /* InfoPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAA8592A632308005071EB /* InfoPageView.swift */; };
+		22AAA85A2A632308005071EB /* InfoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAA8592A632308005071EB /* InfoPageViewController.swift */; };
 		22B034482A6ECFF700799FF4 /* MainViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B034472A6ECFF700799FF4 /* MainViewControllerPresenter.swift */; };
-		22B1323B2A93F69F00A14A68 /* RegularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B132392A93F69F00A14A68 /* RegularTableViewCell.swift */; };
-		22B1323C2A93F69F00A14A68 /* RegularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B1323A2A93F69F00A14A68 /* RegularTableViewCell.xib */; };
-		22CF83CB2A68617700317D8C /* InfoPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CF83CA2A68617700317D8C /* InfoPageView.xib */; };
+		22CF83CB2A68617700317D8C /* InfoPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22CF83CA2A68617700317D8C /* InfoPageViewController.xib */; };
 		22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACB2A6163F100A91420 /* AppDelegate.swift */; };
 		22DC5ACE2A6163F100A91420 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */; };
 		22DC5AD02A6163F100A91420 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC5ACF2A6163F100A91420 /* MainViewController.swift */; };
@@ -35,14 +34,13 @@
 /* Begin PBXFileReference section */
 		0D6E4C8A0DA148F2E5A01A52 /* Pods_Weather_Brick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_Brick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A9504129BEE869DC976C7B /* Pods-Weather Brick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather Brick.release.xcconfig"; path = "Target Support Files/Pods-Weather Brick/Pods-Weather Brick.release.xcconfig"; sourceTree = "<group>"; };
-		22A1FB3C2A9B6DDD0055F6F3 /* WindTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindTableViewCell.swift; sourceTree = "<group>"; };
-		22A1FB3D2A9B6DDD0055F6F3 /* WindTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindTableViewCell.xib; sourceTree = "<group>"; };
+		221F28B02AA1FF7C001E53D7 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
+		22A1FB3C2A9B6DDD0055F6F3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		22A1FB3D2A9B6DDD0055F6F3 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		22AAA8542A62A0FE005071EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		22AAA8592A632308005071EB /* InfoPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPageView.swift; sourceTree = "<group>"; };
+		22AAA8592A632308005071EB /* InfoPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPageViewController.swift; sourceTree = "<group>"; };
 		22B034472A6ECFF700799FF4 /* MainViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerPresenter.swift; sourceTree = "<group>"; };
-		22B132392A93F69F00A14A68 /* RegularTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularTableViewCell.swift; sourceTree = "<group>"; };
-		22B1323A2A93F69F00A14A68 /* RegularTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegularTableViewCell.xib; sourceTree = "<group>"; };
-		22CF83CA2A68617700317D8C /* InfoPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoPageView.xib; sourceTree = "<group>"; };
+		22CF83CA2A68617700317D8C /* InfoPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoPageViewController.xib; sourceTree = "<group>"; };
 		22DC5AC82A6163F100A91420 /* Weather Brick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Brick.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22DC5ACB2A6163F100A91420 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22DC5ACD2A6163F100A91420 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,8 +83,8 @@
 		22AAA8582A632293005071EB /* SubModules */ = {
 			isa = PBXGroup;
 			children = (
-				22AAA8592A632308005071EB /* InfoPageView.swift */,
-				22CF83CA2A68617700317D8C /* InfoPageView.xib */,
+				22AAA8592A632308005071EB /* InfoPageViewController.swift */,
+				22CF83CA2A68617700317D8C /* InfoPageViewController.xib */,
 			);
 			path = SubModules;
 			sourceTree = "<group>";
@@ -94,10 +92,8 @@
 		22B132382A93E7DF00A14A68 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				22B132392A93F69F00A14A68 /* RegularTableViewCell.swift */,
-				22B1323A2A93F69F00A14A68 /* RegularTableViewCell.xib */,
-				22A1FB3C2A9B6DDD0055F6F3 /* WindTableViewCell.swift */,
-				22A1FB3D2A9B6DDD0055F6F3 /* WindTableViewCell.xib */,
+				22A1FB3C2A9B6DDD0055F6F3 /* CustomTableViewCell.swift */,
+				22A1FB3D2A9B6DDD0055F6F3 /* CustomTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -169,6 +165,7 @@
 			children = (
 				22DC5AE72A61708C00A91420 /* UIViewExtension.swift */,
 				22DC5AE92A6170ED00A91420 /* UIColorExtension.swift */,
+				221F28B02AA1FF7C001E53D7 /* CALayerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,8 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22DC5AEC2A6171A600A91420 /* Ubuntu-Bold.ttf in Resources */,
-				22A1FB3F2A9B6DDD0055F6F3 /* WindTableViewCell.xib in Resources */,
-				22B1323C2A93F69F00A14A68 /* RegularTableViewCell.xib in Resources */,
+				22A1FB3F2A9B6DDD0055F6F3 /* CustomTableViewCell.xib in Resources */,
 				22DC5AD82A6163F100A91420 /* LaunchScreen.storyboard in Resources */,
 				22DC5AF02A6171CA00A91420 /* Ubuntu-Medium.ttf in Resources */,
 				22DC5AEE2A6171B400A91420 /* Ubuntu-Light.ttf in Resources */,
@@ -274,7 +270,7 @@
 				22DC5AF62A61736E00A91420 /* Localizable.strings in Resources */,
 				22DC5AF22A6171D400A91420 /* Ubuntu-Regular.ttf in Resources */,
 				22DC5AD52A6163F100A91420 /* Assets.xcassets in Resources */,
-				22CF83CB2A68617700317D8C /* InfoPageView.xib in Resources */,
+				22CF83CB2A68617700317D8C /* InfoPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,16 +343,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				22DC5AD02A6163F100A91420 /* MainViewController.swift in Sources */,
-				22AAA85A2A632308005071EB /* InfoPageView.swift in Sources */,
+				22AAA85A2A632308005071EB /* InfoPageViewController.swift in Sources */,
 				22B034482A6ECFF700799FF4 /* MainViewControllerPresenter.swift in Sources */,
 				22AAA8552A62A0FE005071EB /* R.generated.swift in Sources */,
 				22DC5ACC2A6163F100A91420 /* AppDelegate.swift in Sources */,
-				22B1323B2A93F69F00A14A68 /* RegularTableViewCell.swift in Sources */,
 				22DC5AEA2A6170ED00A91420 /* UIColorExtension.swift in Sources */,
-				22A1FB3E2A9B6DDD0055F6F3 /* WindTableViewCell.swift in Sources */,
+				22A1FB3E2A9B6DDD0055F6F3 /* CustomTableViewCell.swift in Sources */,
 				22DC5AF42A61733E00A91420 /* WeatherData.swift in Sources */,
 				22DC5AE82A61708C00A91420 /* UIViewExtension.swift in Sources */,
 				22DC5ACE2A6163F100A91420 /* SceneDelegate.swift in Sources */,
+				221F28B12AA1FF7C001E53D7 /* CALayerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

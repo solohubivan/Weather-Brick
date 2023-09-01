@@ -2,16 +2,16 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoPageView" customModule="Weather_Brick" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoPageViewController" customModule="Weather_Brick" customModuleProvider="target">
             <connections>
                 <outlet property="brickConditionsDescribView" destination="GZ8-hL-eHr" id="x1e-Py-KuK"/>
-                <outlet property="contentView" destination="KGb-iN-ROX" id="loR-YB-cqh"/>
                 <outlet property="infoLabelsStackView" destination="5Hp-xQ-QE9" id="S03-6C-97v"/>
                 <outlet property="mainTitleLabel" destination="0jp-Bt-qIS" id="WPO-Y7-sim"/>
                 <outlet property="returnToMainVCButton" destination="k2j-Ct-T9V" id="JWx-zA-XZd"/>
@@ -27,14 +27,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ8-hL-eHr" userLabel="brickConditionsDescribView">
-                    <rect key="frame" x="49" y="244" width="295" height="364"/>
+                    <rect key="frame" x="49" y="248" width="295" height="356"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGb-iN-ROX" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="295" height="364"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jp-Bt-qIS" userLabel="mainTitleLabel">
-                            <rect key="frame" x="126.66666666666666" y="24" width="42" height="21"/>
+                            <rect key="frame" x="126.99999999999999" y="24" width="41.333333333333329" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -43,10 +39,11 @@
                             <rect key="frame" x="30" y="69" width="235" height="200"/>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2j-Ct-T9V" userLabel="returnMainVCButton">
-                            <rect key="frame" x="81" y="301" width="133" height="31"/>
+                            <rect key="frame" x="84.666666666666657" y="301" width="126" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="31" id="8RH-is-z7k"/>
                             </constraints>
+                            <inset key="contentEdgeInsets" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Button"/>
                             <connections>
@@ -57,17 +54,14 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="0jp-Bt-qIS" firstAttribute="centerX" secondItem="GZ8-hL-eHr" secondAttribute="centerX" id="5tp-X0-zS1"/>
-                        <constraint firstAttribute="trailing" secondItem="KGb-iN-ROX" secondAttribute="trailing" id="A2Q-xd-daf"/>
-                        <constraint firstItem="KGb-iN-ROX" firstAttribute="leading" secondItem="GZ8-hL-eHr" secondAttribute="leading" id="BSo-LR-ceT"/>
+                        <constraint firstItem="k2j-Ct-T9V" firstAttribute="centerX" secondItem="GZ8-hL-eHr" secondAttribute="centerX" id="693-Wb-ghA"/>
+                        <constraint firstItem="0jp-Bt-qIS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GZ8-hL-eHr" secondAttribute="leading" constant="16" id="9dH-b0-IA3"/>
                         <constraint firstItem="0jp-Bt-qIS" firstAttribute="top" secondItem="GZ8-hL-eHr" secondAttribute="top" constant="24" id="LaL-55-njK"/>
                         <constraint firstItem="k2j-Ct-T9V" firstAttribute="top" secondItem="5Hp-xQ-QE9" secondAttribute="bottom" constant="32" id="MBx-fG-r1p"/>
-                        <constraint firstItem="k2j-Ct-T9V" firstAttribute="leading" relation="lessThanOrEqual" secondItem="GZ8-hL-eHr" secondAttribute="leading" constant="81" id="PlE-7b-7DN"/>
-                        <constraint firstItem="KGb-iN-ROX" firstAttribute="top" secondItem="GZ8-hL-eHr" secondAttribute="top" id="VfC-lX-WLA"/>
+                        <constraint firstItem="k2j-Ct-T9V" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GZ8-hL-eHr" secondAttribute="leading" constant="16" id="PlE-7b-7DN"/>
                         <constraint firstItem="5Hp-xQ-QE9" firstAttribute="top" secondItem="0jp-Bt-qIS" secondAttribute="bottom" constant="24" id="dEh-wo-kBe"/>
-                        <constraint firstAttribute="bottom" secondItem="KGb-iN-ROX" secondAttribute="bottom" id="fdP-Xs-5M7"/>
-                        <constraint firstAttribute="bottom" secondItem="k2j-Ct-T9V" secondAttribute="bottom" constant="32" id="jqF-0b-z1T"/>
+                        <constraint firstAttribute="bottom" secondItem="k2j-Ct-T9V" secondAttribute="bottom" constant="24" id="jqF-0b-z1T"/>
                         <constraint firstAttribute="trailing" secondItem="5Hp-xQ-QE9" secondAttribute="trailing" constant="30" id="sA5-M8-L3w"/>
-                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="k2j-Ct-T9V" secondAttribute="trailing" constant="81" id="t2e-kV-cCA"/>
                         <constraint firstItem="5Hp-xQ-QE9" firstAttribute="leading" secondItem="GZ8-hL-eHr" secondAttribute="leading" constant="30" id="y3o-xz-LD6"/>
                     </constraints>
                 </view>
@@ -75,6 +69,7 @@
             <viewLayoutGuide key="safeArea" id="GDl-my-p8z"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="GZ8-hL-eHr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GDl-my-p8z" secondAttribute="top" constant="16" id="5Ty-gg-Ax8"/>
                 <constraint firstItem="GZ8-hL-eHr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="C1o-F8-fe7"/>
                 <constraint firstAttribute="trailing" secondItem="GZ8-hL-eHr" secondAttribute="trailing" constant="49" id="FVI-st-VFG"/>
                 <constraint firstItem="gnG-Om-ErS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GVX-bY-QlJ"/>

@@ -16,7 +16,6 @@ protocol MainVCPresenterProtocol: AnyObject {
 
 class MainViewControllerPresenter: MainVCPresenterProtocol {
    
-
     private var weatherData = WeatherData()
     private weak var view: MainViewProtocol?
     
@@ -34,11 +33,7 @@ class MainViewControllerPresenter: MainVCPresenterProtocol {
     func fetchData(latitude: Double, longitude: Double) {
         updateWeatherInfo(latitude: latitude, longitude: longitude)
     }
-    
-  //  func provideWeatherData() -> WeatherData {
- //       return weatherData
- //   }
-    
+
     // Private Methods
     
     private func updateWeatherInfo(latitude: Double, longitude: Double) {
