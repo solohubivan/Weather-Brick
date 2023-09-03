@@ -180,6 +180,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         cell.weatherData = weatherData
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.size.height
+    }
 }
 
 extension MainViewController: MainViewProtocol {
