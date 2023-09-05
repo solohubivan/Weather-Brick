@@ -25,8 +25,6 @@ class MainViewController: UIViewController {
 
     private var presenter: MainVCPresenterProtocol!
     
-    private var weatherData: WeatherData?
-    
     private let refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshActivated), for: .valueChanged)
@@ -177,7 +175,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! CustomTableViewCell
         cell.selectionStyle = .none
-        cell.weatherData = weatherData
+        cell.updateBrickStateImage(with: presenter.getDataForCell())
         return cell
     }
     
@@ -188,8 +186,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController: MainViewProtocol {
     func updateUI(with weatherData: WeatherData) {
-        
-        self.weatherData = weatherData
         
         let temperature = Int(weatherData.main.temp)
         temperatureLabel.text = "\(temperature)°"

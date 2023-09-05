@@ -7,49 +7,46 @@
 
 import UIKit
 
+struct BrickCellViewModel {
+    let weather: String
+    let temperature: Int
+    let windSpeed: Double
+}
+
 class CustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var visualWeatherDisplayBrickView: UIView!
     @IBOutlet weak var windBrickStateImageView: UIImageView!
-    
-    var weatherData: WeatherData? {
-        didSet {
-            if let weatherData = weatherData {
-                updateBrickStateImage(with: weatherData)
-            }
-        }
-    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-    
-    private func updateBrickStateImage(with: WeatherData) {
+
+    public func updateBrickStateImage(with viewModel: BrickCellViewModel) {
         var imageName = UIImage()
         
-        let weather = weatherData!.weather.first?.main
-        let temperature = Int(weatherData!.main.temp)
-        let windSpeed = Double(weatherData!.wind.speed)
-
-        if temperature > Constants.highTemperature {
+        if viewModel.temperature > Constants.highTemperature {
             imageName = R.image.image_stone_cracks()!
         } else {
-            switch weather {
-            case R.string.localizable.clear(), R.string.localizable.sunny(): imageName = R.image.image_stone_normal()!
-            case R.string.localizable.rain(), R.string.localizable.drizzle(): imageName = R.image.image_stone_wet()!
-            case R.string.localizable.snow(): imageName = R.image.image_stone_snow()!
-            case R.string.localizable.fog(), R.string.localizable.haze(), R.string.localizable.mist(): imageName = applyBlurEffect(to: R.image.image_stone_normal()!, blurEffect: Constants.blurEffectValue)!
-            default:
+            if let weatherType = WeatherType(rawValue: viewModel.weather) {
+                switch weatherType {
+                case .clear, .sunny: imageName = R.image.image_stone_normal()!
+                case .rain, .drizzle: imageName = R.image.image_stone_wet()!
+                case .snow: imageName = R.image.image_stone_snow()!
+                case .fog, .haze, .mist: imageName = applyBlurEffect(to: R.image.image_stone_normal()!, blurEffect: Constants.blurEffectValue)!
+                }
+            } else {
                 imageName = R.image.image_stone_normal()!
             }
         }
         windBrickStateImageView.image = imageName
         
-        if windSpeed > Constants.highWind {
+        if viewModel.windSpeed > Constants.highWind {
             setupWindVisualWeatherDisplayBrick()
         }
     }
+        
     
     private func applyBlurEffect(to image: UIImage, blurEffect: CGFloat) -> UIImage? {
         if let ciImage = CIImage(image: image) {
@@ -96,4 +93,16 @@ extension CustomTableViewCell {
         
         static let yOffset: CGFloat = -230
     }
+
+    private enum WeatherType: String {
+        case clear = "Clear"
+        case sunny = "Sunny"
+        case rain = "Rain"
+        case drizzle = "Drizzle"
+        case snow = "Snow"
+        case fog = "Fog"
+        case haze = "Haze"
+        case mist = "Mist"
+    }
+
 }

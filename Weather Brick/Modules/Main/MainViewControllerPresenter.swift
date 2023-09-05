@@ -11,6 +11,7 @@ import UIKit
 protocol MainVCPresenterProtocol: AnyObject {
     func createTextForLocationPosition() -> String
     func fetchData(latitude: Double, longitude: Double)
+    func getDataForCell() -> BrickCellViewModel
 }
 
 
@@ -24,6 +25,14 @@ class MainViewControllerPresenter: MainVCPresenterProtocol {
     }
     
     // Public Methods
+    
+    func getDataForCell() -> BrickCellViewModel {
+        let weather = (weatherData.weather.first?.main)!
+        let temperature = Int(weatherData.main.temp)
+        let wind = Double(weatherData.wind.speed)
+        
+        return BrickCellViewModel(weather: weather, temperature: temperature, windSpeed: wind)
+    }
     
     func createTextForLocationPosition() -> String {
 
