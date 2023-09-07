@@ -22,31 +22,7 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-/*
-    public func updateBrickStateImage(with viewModel: BrickCellViewModel) {
-        var imageName = UIImage()
-        
-        if viewModel.temperature > Constants.highTemperature {
-            imageName = R.image.image_stone_cracks()!
-        } else {
-            if let weatherType = WeatherType(rawValue: viewModel.weather.lowercased()) {
-                switch weatherType {
-                case .clear, .sunny: imageName = R.image.image_stone_normal()!
-                case .rain, .drizzle: imageName = R.image.image_stone_wet()!
-                case .snow: imageName = R.image.image_stone_snow()!
-                case .fog, .haze, .mist: imageName = applyBlurEffect(to: R.image.image_stone_normal()!, blurEffect: Constants.blurEffectValue)!
-                }
-            } else {
-                imageName = R.image.image_stone_normal()!
-            }
-        }
-        windBrickStateImageView.image = imageName
-        
-        if viewModel.windSpeed > Constants.highWind {
-            setupWindVisualWeatherDisplayBrick()
-        }
-    }
-      */
+
     public func updateBrickStateImage(with viewModel: BrickCellViewModel) {
         var imageName = UIImage()
         
