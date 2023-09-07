@@ -7,6 +7,36 @@
 
 import UIKit
 
+private enum WeatherType: String {
+    case clear
+    case sunny
+    case rain
+    case drizzle
+    case snow
+    case fog
+    case haze
+    case mist
+
+    static func weatherType(from viewModel: BrickCellViewModel) -> WeatherType? {
+        let localizedStrings: [WeatherType: String] = [
+            .clear: R.string.localizable.clear(),
+            .sunny:R.string.localizable.sunny(),
+            .rain: R.string.localizable.rain(),
+            .drizzle: R.string.localizable.drizzle(),
+            .snow: R.string.localizable.snow(),
+            .fog: R.string.localizable.fog(),
+            .haze: R.string.localizable.haze(),
+            .mist: R.string.localizable.mist()
+        ]
+        for (weatherType, localizedString) in localizedStrings {
+            if localizedString == viewModel.weather {
+                return weatherType
+            }
+        }
+        return nil
+    }
+}
+
 struct BrickCellViewModel {
     let weather: String
     let temperature: Int
@@ -91,49 +121,6 @@ extension CustomTableViewCell {
         static let highWind: CGFloat = 10
         
         static let yOffset: CGFloat = -230
-    }
-
-    private enum WeatherType: String {
-        case clear
-        case sunny
-        case rain
-        case drizzle
-        case snow
-        case fog
-        case haze
-        case mist
-        
-        func localizedString() -> String {
-            switch self {
-            case .clear: return R.string.localizable.clear()
-            case .sunny: return R.string.localizable.sunny()
-            case .rain: return R.string.localizable.rain()
-            case .drizzle: return R.string.localizable.drizzle()
-            case .snow: return R.string.localizable.snow()
-            case .fog: return R.string.localizable.fog()
-            case .haze: return R.string.localizable.haze()
-            case .mist: return R.string.localizable.mist()
-            }
-        }
-        
-        static func weatherType(from viewModel: BrickCellViewModel) -> WeatherType? {
-            let localizedStrings: [WeatherType: String] = [
-                .clear: R.string.localizable.clear(),
-                .sunny:R.string.localizable.sunny(),
-                .rain: R.string.localizable.rain(),
-                .drizzle: R.string.localizable.drizzle(),
-                .snow: R.string.localizable.snow(),
-                .fog: R.string.localizable.fog(),
-                .haze: R.string.localizable.haze(),
-                .mist: R.string.localizable.mist()
-            ]
-            for (weatherType, localizedString) in localizedStrings {
-                if localizedString == viewModel.weather {
-                    return weatherType
-                }
-            }
-            return nil
-        }
     }
 }
 
