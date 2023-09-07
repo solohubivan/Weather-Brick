@@ -22,14 +22,14 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
+/*
     public func updateBrickStateImage(with viewModel: BrickCellViewModel) {
         var imageName = UIImage()
         
         if viewModel.temperature > Constants.highTemperature {
             imageName = R.image.image_stone_cracks()!
         } else {
-            if let weatherType = WeatherType(rawValue: viewModel.weather) {
+            if let weatherType = WeatherType(rawValue: viewModel.weather.lowercased()) {
                 switch weatherType {
                 case .clear, .sunny: imageName = R.image.image_stone_normal()!
                 case .rain, .drizzle: imageName = R.image.image_stone_wet()!
@@ -46,7 +46,30 @@ class CustomTableViewCell: UITableViewCell {
             setupWindVisualWeatherDisplayBrick()
         }
     }
+      */
+    public func updateBrickStateImage(with viewModel: BrickCellViewModel) {
+        var imageName = UIImage()
         
+        if viewModel.temperature > Constants.highTemperature {
+            imageName = R.image.image_stone_cracks()!
+        } else {
+            if let weatherType = WeatherType.weatherType(from: viewModel) {
+                switch weatherType {
+                case .clear, .sunny: imageName = R.image.image_stone_normal()!
+                case .rain, .drizzle: imageName = R.image.image_stone_wet()!
+                case .snow: imageName = R.image.image_stone_snow()!
+                case .fog, .haze, .mist: imageName = applyBlurEffect(to: R.image.image_stone_normal()!, blurEffect: Constants.blurEffectValue)!
+                }
+            } else {
+                imageName = R.image.image_stone_normal()!
+            }
+        }
+        windBrickStateImageView.image = imageName
+        
+        if viewModel.windSpeed > Constants.highWind {
+            setupWindVisualWeatherDisplayBrick()
+        }
+    }
     
     private func applyBlurEffect(to image: UIImage, blurEffect: CGFloat) -> UIImage? {
         if let ciImage = CIImage(image: image) {
@@ -95,14 +118,46 @@ extension CustomTableViewCell {
     }
 
     private enum WeatherType: String {
-        case clear = "Clear"
-        case sunny = "Sunny"
-        case rain = "Rain"
-        case drizzle = "Drizzle"
-        case snow = "Snow"
-        case fog = "Fog"
-        case haze = "Haze"
-        case mist = "Mist"
+        case clear
+        case sunny
+        case rain
+        case drizzle
+        case snow
+        case fog
+        case haze
+        case mist
+        
+        func localizedString() -> String {
+            switch self {
+            case .clear: return R.string.localizable.clear()
+            case .sunny: return R.string.localizable.sunny()
+            case .rain: return R.string.localizable.rain()
+            case .drizzle: return R.string.localizable.drizzle()
+            case .snow: return R.string.localizable.snow()
+            case .fog: return R.string.localizable.fog()
+            case .haze: return R.string.localizable.haze()
+            case .mist: return R.string.localizable.mist()
+            }
+        }
+        
+        static func weatherType(from viewModel: BrickCellViewModel) -> WeatherType? {
+            let localizedStrings: [WeatherType: String] = [
+                .clear: R.string.localizable.clear(),
+                .sunny:R.string.localizable.sunny(),
+                .rain: R.string.localizable.rain(),
+                .drizzle: R.string.localizable.drizzle(),
+                .snow: R.string.localizable.snow(),
+                .fog: R.string.localizable.fog(),
+                .haze: R.string.localizable.haze(),
+                .mist: R.string.localizable.mist()
+            ]
+            for (weatherType, localizedString) in localizedStrings {
+                if localizedString == viewModel.weather {
+                    return weatherType
+                }
+            }
+            return nil
+        }
     }
-
 }
+
