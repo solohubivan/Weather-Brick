@@ -52,8 +52,8 @@ class CustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
-    public func updateBrickStateImage(with viewModel: BrickCellViewModel) {
+    
+    public func updateBrickStateImage(with viewModel: BrickCellViewModel) -> UIImage {
         var imageName = UIImage()
         
         if viewModel.temperature > Constants.highTemperature {
@@ -70,13 +70,13 @@ class CustomTableViewCell: UITableViewCell {
                 imageName = R.image.image_stone_normal()!
             }
         }
-        windBrickStateImageView.image = imageName
-        
         if viewModel.windSpeed > Constants.highWind {
             setupWindVisualWeatherDisplayBrick()
         }
+        
+        return imageName
     }
-    
+
     private func applyBlurEffect(to image: UIImage, blurEffect: CGFloat) -> UIImage? {
         if let ciImage = CIImage(image: image) {
             let blurFilter = CIFilter(name: Constants.blurFilterName)

@@ -13,6 +13,7 @@ let R = _R(bundle: Bundle(for: BundleFinder.self))
 struct _R {
   let bundle: Foundation.Bundle
 
+  let id = id()
   let reuseIdentifier = reuseIdentifier()
 
   var string: string { .init(bundle: bundle, preferredLanguages: nil, locale: nil) }
@@ -293,6 +294,21 @@ struct _R {
 
     /// Resource file `Ubuntu-Regular.ttf`.
     var ubuntuRegularTtf: RswiftResources.FileResource { .init(name: "Ubuntu-Regular", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+  }
+
+  /// This `_R.id` struct is generated, and contains static references to 1 accessibility identifiers.
+  struct id {
+    let infoPageViewController = infoPageViewController()
+
+    /// This `_R.id.infoPageViewController` struct is generated, and contains static references to 2 accessibility identifiers.
+    struct infoPageViewController {
+
+      /// Accessibility identifier `infoTitleLabel`.
+      let infoTitleLabel = "infoTitleLabel"
+
+      /// Accessibility identifier `returnMainVCButton`.
+      let returnMainVCButton = "returnMainVCButton"
+    }
   }
 
   /// This `_R.nib` struct is generated, and contains static references to 3 nibs.

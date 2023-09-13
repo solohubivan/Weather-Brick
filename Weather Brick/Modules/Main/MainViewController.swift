@@ -175,7 +175,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! CustomTableViewCell
         cell.selectionStyle = .none
-        cell.updateBrickStateImage(with: presenter.getDataForCell())
+        let brickImage = cell.updateBrickStateImage(with: presenter.getDataForCell())
+        cell.windBrickStateImageView.image = brickImage
         return cell
     }
     

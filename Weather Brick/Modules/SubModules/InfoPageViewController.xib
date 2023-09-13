@@ -31,6 +31,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jp-Bt-qIS" userLabel="mainTitleLabel">
                             <rect key="frame" x="126.99999999999999" y="24" width="41.333333333333329" height="21"/>
+                            <accessibility key="accessibilityConfiguration" identifier="infoTitleLabel"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -40,6 +41,7 @@
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2j-Ct-T9V" userLabel="returnMainVCButton">
                             <rect key="frame" x="84.666666666666657" y="301" width="126" height="31"/>
+                            <accessibility key="accessibilityConfiguration" identifier="returnMainVCButton"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="31" id="8RH-is-z7k"/>
                             </constraints>
